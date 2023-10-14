@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #image-container {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  cursor: nwse-resize;
+}
+
+#image {
+  width: 100%;
+  height: 100%;
+}
+
+#corner-pointer {
+  position: absolute;
+
+  cursor: nwse-resize;
+  bottom: 0;
+  right: 0;
+  
+}
+.top_cornor{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+
+}
+.bottom_cornor{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.cornor{
+    width: 15px;
+    height: 15px;
+    background-color: red;
+
+}
+    </style>
+</head>
+<body>
+    
+<div id="image-container">
+    <div class="top_cornor">
+        <div class="cornor"></div>
+        <div class="cornor"></div>
+    </div>
+    <img id="image" src="./download (3).jpg"  alt="Image">
+
+    <div id="corner-pointer" >     
+        
+      
+    </div>
+    <div class="bottom_cornor">
+        <div class="cornor"></div>
+        <div class="cornor"></div>
+
+    </div>
+  </div>
+  <script>
+      const cornerPointer = document.getElementById('corner-pointer');
+  const imageContainer = document.getElementById('image-container');
+
+    cornerPointer.style.width = document.getElementById('image').width + "px"
+cornerPointer.style.height = document.getElementById('image').height + "px"
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+  const cornerPointer = document.getElementById('corner-pointer');
+  const imageContainer = document.getElementById('image-container');
+
+  let isResizing = false;
+
+
+  cornerPointer.addEventListener('mousedown', function (event) {
+    isResizing = true;
+    const startWidth = parseInt(getComputedStyle(imageContainer).width);
+    const startHeight = parseInt(getComputedStyle(imageContainer).height);
+    const startX = event.clientX;
+    const startY = event.clientY;
+
+    document.addEventListener('mousemove', function (e) {
+      if (isResizing) {
+        const newWidth = startWidth + (e.clientX - startX);
+        const newHeight = startHeight + (e.clientY - startY);
+
+        imageContainer.style.width = newWidth + 'px';
+        imageContainer.style.height = newHeight + 'px';
+      }
+    });
+
+    document.addEventListener('mouseup', function () {
+      isResizing = false;
+    });
+  });
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrate Canva Api</title>
+</head>
+<body>
+    
+
+
+
+
+    <script src="https://sdk.canva.com/designbutton/v2/api.js"></script>
+    <script>
+        ((document, url) => {
+  const script = document.createElement("script");
+  script.src = url;
+  script.onload = () => {
+    // API initialization
+  };
+  document.body.appendChild(script);
+})(document, "https://sdk.canva.com/designbutton/v2/api.js");
+
+
+
+
+(async () => {
+        if (!window.Canva || !window.Canva.DesignButton) {
+          return;
+        }
+
+        const api = await window.Canva.DesignButton.initialize({
+          apiKey: "API KEY GOES HERE",
+        });
+
+        const button = document.querySelector("button");
+
+        button.onclick = () => {
+          api.createDesign({
+            design: {
+              type: "Poster",
+            },
+          });
+        };
+      })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #image-container {
+  position: relative;
+}
+
+#image {
+  width: 100%;
+  height: auto;
+}
+
+#controls {
+  margin-top: 10px;
+}
+
+button {
+  margin-right: 10px;
+}
+    </style>
+</head>
+<body>
+    
+<div id="image-container">
+    <img id="image" src="./download (3).jpg" alt="Image">
+    <div id="controls">
+      <button onclick="zoomIn()">Zoom In</button>
+      <button onclick="zoomOut()">Zoom Out</button>
+      <button onclick="rotateClockwise()">Rotate Clockwise</button>
+      <button onclick="rotateCounterClockwise()">Rotate Counter-Clockwise</button>
+    </div>
+  </div>
+  <script>
+    function zoomIn() {
+  const image = document.getElementById('image');
+  const currentWidth = image.width;
+  const newWidth = currentWidth * 1.2; // You can adjust the zoom factor
+  image.style.width = newWidth + 'px';
+}
+
+function zoomOut() {
+  const image = document.getElementById('image');
+  const currentWidth = image.width;
+  const newWidth = currentWidth / 1.2; // You can adjust the zoom factor
+  image.style.width = newWidth + 'px';
+}
+
+function rotateClockwise() {
+  const image = document.getElementById('image');
+  const currentRotation = getRotationDegrees(image);
+  const newRotation = currentRotation + 90;
+  image.style.transform = `rotate(${newRotation}deg)`;
+}
+
+function rotateCounterClockwise() {
+  const image = document.getElementById('image');
+  const currentRotation = getRotationDegrees(image);
+  const newRotation = currentRotation - 90;
+  image.style.transform = `rotate(${newRotation}deg)`;
+}
+
+// Helper function to get the current rotation in degrees
+function getRotationDegrees(element) {
+  const transform = window.getComputedStyle(element, null).getPropertyValue('transform');
+  const matrix = transform.split('(')[1].split(')')[0].split(',');
+  const a = matrix[0];
+  const b = matrix[1];
+  const angle = Math.atan2(b, a);
+  return angle * (180 / Math.PI);
+}
+  </script>
+</body>
+</html>

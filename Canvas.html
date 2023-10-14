@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Web App</title>
+    <style>
+        #canvas{
+width: 100%;
+height: 100%;
+background-color: red;
+position: absolute;
+top: 0;
+left: 0;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+//         // Get a reference to the canvas element
+// const canvas = document.getElementById('canvas');
+
+// // Check if the canvas element is supported by the browser
+// if (canvas.getContext) {
+//   // Get the 2D rendering context
+//   const ctx = canvas.getContext('2d');
+
+//   // Set the background color
+//   ctx.fillStyle = 'blue'; // You can set any color you want here
+
+//   // Draw a filled rectangle
+//   ctx.fillRect(0, 0, canvas.width, canvas.height);
+// console.log(ctx)
+// } else {
+//   // Canvas not supported, provide a fallback or error message
+//   console.log('Canvas is not supported in this browser.');
+// }
+        let canvas = document.getElementById('canvas')
+let ctx = canvas.getContext('2d')
+console.log(ctx)
+
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+const numberOfPerticale = 200
+let particale = []
+const pumkin = new Image()
+pumkin.src = "download.jpg"
+const pumkins = new Image()
+pumkins.src = "download (3).jpg"
+
+// ctx.translate(100, 100)
+// ctx.rotate(20* Math.PI )
+// // ctx.fillStyle = 'blue';
+// // ctx.fillRect(0, 0, canvas.width, canvas.height)
+// ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+class Particales{
+constructor(){
+    this.x = Math.random() * canvas.width
+    this.y = Math.random() * canvas.height
+    this.size = Math.random() * 20 + 50
+this.speed = Math.random() * 2 + 0.5
+this.angle = Math.random() *  360
+this.spin = Math.random() < 0.5 ? -1 : 1
+this.frameX = Math.floor(Math.random() * 2)
+this.frameY = Math.floor(Math.random() * 2)
+this.spritSize = 900/2
+}
+draw(){
+    // ctx.beginPath()
+    ctx.save()
+    // ctx.fillStyle = 'blue';
+    ctx.translate(this.x, this.y)
+    ctx.rotate(this.angle * Math.PI/ 360 * this.spin)
+    console.log(this.x, this.y, this.size, this.size)
+    // ctx.fillRect(0, 0, canvas.width / 2, canvas.height / 2)  // Draw a Rectangle
+    // ctx.drawImage(pumkin, 0 - this.size/2 , 0 - this.size / 2, this.size , this.size) // Display Image
+    // ctx.drawImage(image, sz, sy, sw, sw, dx, dy, dw, dh)
+    ctx.drawImage(pumkins, this.frameX * this.spritSize, this.frameY * this.spritSize, this.spritSize, this.spritSize, 0 - this.size / 2, 0 - this.size /2, this.size, this.size)
+    ctx.restore()
+}
+update(){
+    this.angle +=1
+    if(this.y-this.size > canvas.height){
+        this.y = 0 - this.size
+        this.x = Math.random() * canvas.width
+    this.size = Math.random() * 100 + 50
+this.speed = Math.random() * 2 + 0.5
+
+      
+    }
+    this.y += this.speed
+}
+
+}
+
+console.log(pumkin.src)
+const newparticales = new Particales
+console.log(newparticales)
+
+function init (){
+    for(let i = 0; i<numberOfPerticale; i++){
+        particale.push(new Particales())
+    }
+    
+}
+init()
+function animate(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    // newparticales.update()
+    // newparticales.draw()
+    for(let i =0; i<particale.length; i++){
+        particale[i].draw()
+        particale[i].update()
+    }
+    requestAnimationFrame(animate)
+    
+}
+animate()
+    </script>
+</body>
+
+</html>

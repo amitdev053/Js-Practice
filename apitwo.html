@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous" />
+    </head>
+    <body>
+        <div
+            class="container my-5 d-flex align-items-center justify-content-center position-relative">
+            <!-- Loader Start Here ------->
+
+            <div
+                class="spinner-border position-absolute top-50 left-50"
+                role="status"
+                id="loader">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <!-- Loader Start Here ------->
+
+            <!-- Row Start Here ------->
+
+            <div class="row w-100 flex-column gap-1" id="commentRow">
+                <!-- Columns Start Here ------->
+
+                <!-- Columns End Here ------->
+            </div>
+            <!-- Row End Here ------->
+        </div>
+        <script>
+      function setLoader() {
+        let loader = document.getElementById("loader");
+        loader.style.display = "block";
+      }
+      function setLoaderfalse() {
+        let loader = document.getElementById("loader");
+        loader.style.display = "none";
+      }
+      function getData() {
+        fetch("https://dummyjson.com/products")
+          .then((response) => {
+            setLoader();
+
+            return response.json();
+          })
+          .then((result) => {
+            console.log(result);
+            setTimeout(() => {
+              setLoaderfalse();
+            }, 2000);
+            result.products.forEach(function (comment, index) {
+              let images = comment.images;
+              if (images[4]) {
+                var pimages = images[4];
+              } else {
+                var pimages =
+                  "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg";
+              }
+
+              let commentRow = document.getElementById("commentRow");
+              console.log(comment.url);
+              console.log(comment.title);
+              let comments = `
+    
+    <div class="col-4">
+            <div class="card">
+                <img src='${pimages}' class="card-img-top" style="height: 300px;" id="productimg${index}" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">${comment.title}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+        `;
+
+              commentRow.innerHTML += comments;
+            });
+          });
+      }
+
+      getData();
+    </script>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pan{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+position: relative;
+            width: 4%;
+
+        }
+        .top_pan_icon{
+            position: absolute;
+            top:-13px;
+        }
+        .bottom_pan_icon{
+            position: absolute;
+            bottom:-15px;
+        }
+        .pan_round{
+            background-color: black;
+            border-radius: 50%;
+            padding: 4px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="pan">
+        <i class="fa-solid fa-caret-left"></i>
+        <i class="fa-solid fa-sort-up  top_pan_icon"></i>        
+        <div class="pan_round"></div>
+        <i class="fa-solid fa-caret-right "></i>
+        <i class="fa-solid fa-caret-down  bottom_pan_icon"></i>
+    </div>
+    <script src="https://kit.fontawesome.com/1508b7bacb.js" crossorigin="anonymous"></script>
+</body>
+</html>

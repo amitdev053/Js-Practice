@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Slider</title>
+    <style>
+        .slider-container {
+  width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  margin-top: 10px;
+}
+
+#prevBtn, #nextBtn {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#prevBtn:hover, #nextBtn:hover {
+  background-color: #0056b3;
+}
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider">
+          <div class="slide">
+            <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="Product 1">
+            <h3>Product 1</h3>
+            <p>Description of Product 1.</p>
+          </div>
+          <div class="slide">
+            <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="Product 2">
+            <h3>Product 2</h3>
+            <p>Description of Product 2.</p>
+          </div>
+          <!-- Add more slides as needed -->
+        </div>
+        <button id="prevBtn">Previous</button>
+        <button id="nextBtn">Next</button>
+      </div>
+<script>
+const slider = document.querySelector('.slider');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const slides = document.querySelectorAll('.slide');
+const slideWidth = slides[0].offsetWidth;
+
+let currentIndex = 0;
+
+function goToSlide(index) {
+  currentIndex = index;
+  const translateX = -currentIndex * slideWidth;
+  slider.style.transform = `translateX(${translateX}px)`;
+}
+
+function nextSlide() {
+  if (currentIndex < slides.length - 1) {
+    goToSlide(currentIndex + 1);
+  } else {
+    goToSlide(0);
+  }
+}
+
+function prevSlide() {
+  if (currentIndex > 0) {
+    goToSlide(currentIndex - 1);
+  } else {
+    goToSlide(slides.length - 1);
+  }
+}
+
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
+
+// Auto-advance the slider
+setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+</script>       
+</body>
+</html>

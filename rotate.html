@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>Rotate and Save image in JavaScript</title>
+</head>
+<body>
+    <p>Click the image to rotate 180 degrees and save</p>
+
+    <img src="./canvas_image (12).png" id="myimage" 
+        onclick="rotateImage();" alt="" />
+       <a href=""download id="downloadimgsrc"> <img src="" id="newimg" alt=""></a>
+
+</body>
+
+<script>
+    // let rotateImage = () => {
+    //     let img = new Image();
+    //     img.src = document.getElementById('myimage').src;
+       
+    //     // Create a canvas object.
+    //     let canvas = document.createElement("canvas");
+        
+    //     // Wait till the image is loaded.
+    //     img.onload = function(){
+    //         rotateImage();
+    //         saveImage(img.src.replace(/^.*[\\\/]/, ''));
+    //     }
+        
+    //     let rotateImage = () => {
+    //         // Create canvas context.
+    //         let ctx = canvas.getContext("2d");	
+
+    //         // Assign width and height.
+    //         canvas.width = img.width;
+    //         canvas.height = img.height;
+
+    //         ctx.translate(canvas.width / 2,canvas.height / 2);
+
+    //         // Rotate the image and draw it on the canvas. 
+    //             // (I am not showing the canvas on the webpage.
+    //             ctx.rotate(90 * Math.PI / 180);
+    //        var  cities= ctx.drawImage(img, -img.width / 2, -img.height / 2);
+    //        console.log(cities)
+    //     }
+
+    //     let saveImage = (img_name) => {
+    //         let a = document.createElement('a');
+    //         console.log(canvas.toDataURL("image/png"))
+    //         a.href = canvas.toDataURL("image/png");
+    //         // a.download = img_name;
+    //         // document.body.appendChild(a);
+    //         // a.click();    
+           
+    //         document.getElementById('newimg').src = a.href    
+    //     }
+    // }
+        
+        function rotateImage(){
+let imagea= document.getElementById('myimage').src
+// imagea.style.transform = "rotate(90deg)"
+
+let imageb = document.getElementById('newimg')
+imageb.src = imagea
+imageb.style.transform = "rotate(90deg)"      
+document.getElementById('downloadimgsrc').href = imagea
+
+        }
+</script>
+</html>
