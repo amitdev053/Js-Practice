@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="//unpkg.com/grapesjs/dist/css/grapes.min.css">
     <link rel="stylesheet" href="./external.css">
+    <!-- <link rel="stylesheet" href="./contextMenu.css"> -->
+
 </head>
 
 <body>
@@ -124,17 +126,18 @@
                                 <div class="app_sidebar_heading">Uploaded Image</div>
                                 <i class="fa-solid fa-camera"></i>
                             </div>
-                            <div class="button_div position-relative">                             
+                            <div class="button_div position-relative" id="userUploadBox">                             
 
-                                <button class="upload_btn" onclick="uploadUserImage()">Upload Image <i class="fa-solid fa-camera"></i></button>
-                                <input type="file" id="imageUpload" class="position-absolute upload_image_input" (change)="uploadTImage($event)"
-                                accept="image/*" multiple>
+                                <button class="upload_btn">Upload Image <i class="fa-solid fa-camera"></i>
+                                <input type="file" id="imageUpload" onchange="uploadUserImage(event)" class="position-absolute upload_image_input" accept="image/*" multiple></button>
+                            </div>
+
+                            <div id="uploadUserImage" class="d-flex align-items-start justify-space-between upload_user_div_area">
+
                             </div>
 
 
-                          <div class="col-4 p-0 element_image_cols">
-                                <img src="../download.jpg" alt="" class="img-fluid" onclick="setImage(this)" dragabble="true" />
-                            </div>
+                          
                               <!-- <div class="col-4 p-0 element_image_cols">
                                 <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg"
                                     alt="" class="img-fluid" />
@@ -209,6 +212,52 @@
 
                     <!-- Text Menu elements Div end here  -->
 
+                    <!-- Set Border elements Div start here  -->
+                    <div class="col-2 sidebar_element_div hide_element_div" id="SetBorderElement">
+
+
+                        <div class="row sidebar_element_row">
+
+                            <div class="col-12 p-0 sidebar_heading_div">
+                                <div class="app_sidebar_heading">Set Border</div>
+                                <i class="fa-solid fa-grip-lines"></i>
+                            </div>
+                            <div class="filter_controls px-0 pb-2">
+                                <span class="filter_fonts">Set Border</span>
+                                <input type="range" min="1" max="10" step="1" value="1"  class="range_input" id="range_border_input" onchange="setBorderSize()">
+                              
+           <span class="filter_fonts">Border Size:-  <span id="bordervalue"></span></span>
+
+                            </div>
+
+<div id="uploadUserImage" class="d-flex align-items-start justify-space-between upload_user_div_area my-3 gap-2">
+    <div class="col-4 p-0 upload_user_image_col color_card" onclick="getBorderColor(this)">
+      
+    </div>
+    <div class="col-4 p-0 upload_user_image_col color_card bg-f97316" onclick="getBorderColor(this)">
+      
+    </div>
+
+    <div class="col-4 p-0 upload_user_image_col color_card bg-ea580c" onclick="getBorderColor(this)">
+      
+    </div>
+    <div class="col-4 p-0 upload_user_image_col color_card bg-fbbf24" onclick="getBorderColor(this)">
+      
+    </div>
+<div class="col-4 p-0 upload_user_image_col color_card position-relative" onclick="getBorderColor(this)">
+        <input type="color" id="textColor" name="favcolor" class="fa-solid text_colorpicker border_color_input" value="#000000"title="Change Text Color" >
+    </div>
+</div>
+
+
+                          
+                        </div>
+                    </div>
+
+
+
+                    <!-- Set Border elements Div end here  -->
+
                 </div>
 
             </div>
@@ -221,15 +270,51 @@
                 <div class="deasginarea_div" id="CanvasOuterHeight">
                     <div class="objects_control position-absolute">
                         <div class="control_group_icon">
-                            <i class="fa-solid fa-bold"   title="Bold"></i>
-                            <i class="fa-solid fa-italic"   title="Italic"></i>
-                            <i class="fa-solid fa-underline"   title="Underline"></i>
-                            <input type="color" id="textColor" name="favcolor" class="fa-solid text_colorpicker" value="#000000"title="Change Text Color" onchange="setColor(this)">
+                            <i class="fa-solid fa-bold"   title="Bold" onclick="setBold()"></i>
+                            <i class="fa-solid fa-italic"   title="Italic" onclick="setItalic()"></i>
+                            <i class="fa-solid fa-underline"   title="Underline" onclick="setUnderline()"></i>
+                            <div style="margin-right:20px;"><input type="color" id="textColor" name="favcolor" class="fa-solid text_colorpicker" value="#000000"title="Change Text Color" onchange="setColor(this)"></div>
                             <i class="fa-brands fa-slack"  title="Flip-X" onclick="setFlipX(event)"></i>
                             <i class="fa-brands fa-slack"  title="Flip-Y" onclick="setFlipY(event)"></i>
+                            <i class="fa-solid fa-grip-lines"  title="Set Borders" onclick="setBorder(this,event)"></i>
+                            <i class="fa-solid fa-rotate-right"  title="Rotate-90deg" onclick="setRotateImage(event)"></i>
+
+                            <!-- font-size div element Starts Here -->
+<div class="font_size_text">
+    <span class="font_size_button" onclick="downfontSize(this, event)">-</span>
+    <span class="font_size_button number" id="fontSizeNumber">14</span>
+    <span class="font_size_button" onclick="upfontSize(this, event)">+</span>
+</div>
+
+                            <!-- font-size div element End Here -->
 
                         </div>
+
+                        <div class="filters" onclick="expandFilters(this , event)" >
+                            <div class="show_filter" id="filter_area">Edit Image <i class="fa-solid fa-angle-down"></i></div>
+
+                            
+                            <div class="filter_controls">
+                                <span class="filter_fonts">Control <span id="setFilterName">Filter</span></span>
+                                <input type="range" min="0" max="1000" step="20"  class="range_input" id="range_input" onchange="changeFilterValue(this)">
+                              
+                                <span class="filter_fonts">Filter Value:-  <span id="setFilterValue"></span></span>
+
+                            </div>
+                            <div class="filter_list">
+                                        <span class="filter_fonts py-1" onclick="setFilters(this, event)">Brightness</span>
+                                        <span class="filter_fonts py-1" onclick="setFilters(this, event)">Invert</span>
+                                        <span class="filter_fonts py-1" onclick="setFilters(this, event)">GrayScale</span>
+                                        <span class="filter_fonts py-1" onclick="setFilters(this, event)">Contrast</span>
+                                        <span class="filter_fonts py-1" onclick="setFilters(this, event)">Saturate</span>
+                                        <span class="filter_fonts py-1" onclick="setFilters(this, event)">Blur</span>
+                                        <span class="filter_fonts py-1" onclick="setFilters(this, event)">Sepia</span>
+                                        <span class="filter_fonts py-1" onclick="setFilters(this, event)">Hue-rotate</span>
+
+                            </div>
+                        </div>
                     </div>
+
                     <div class="area_canvas_content">
                         <div class="top_counter d-flex justify-content-between align-items-center">
                             <span>Page 1</span>
@@ -243,6 +328,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- canvas pages End Here -->
 
                 
@@ -252,9 +338,10 @@
             </div>
         </div>
     </div>
-
-
     <!-- Side bar and content area End here------------------------------------->
+
+   
+
 
 
 
@@ -404,18 +491,29 @@ interact('.element').resizable({
       const target = event.target;
       const x = (parseFloat(target.getAttribute('data-x')) || 0);
       const y = (parseFloat(target.getAttribute('data-y')) || 0);
+      const fontSize = parseInt(getComputedStyle(target).fontSize, 10);
 
-      // Resize the image
+      
+    const newWidth = event.rect.width;
+    const newHeight = event.rect.height;
 
+      // Update the font size based on the element's size
+    const newFontSize = (newWidth + newHeight) / 2;
+    target.style.fontSize = newFontSize + 'px';
 
-      target.style.width = event.rect.width + 'px';
-      target.style.height = event.rect.height + 'px';
+     // You can also restrict the minimum font size if needed
+     if (newFontSize < 12) {
+      target.style.fontSize = '12px';
+   
+    }
 
+    target.style.padding = "20px"
       // Update data-x and data-y attributes
       target.setAttribute('data-x', x);
       target.setAttribute('data-y', y);
     },
   });
+
 
   interact('.element').resizable({
     edges: { left: true, right: true, bottom: true, top: true },

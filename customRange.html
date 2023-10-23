@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Style for the custom range */
+#customRange {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border-radius: 5px;
+}
+
+#customRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4caf50;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#rangeValue {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 10px;
+}
+    </style>
+</head>
+<body>
+    <input type="range" id="customRange">
+<div id="rangeValue">0</div>
+
+<script>
+    const customRange = document.getElementById("customRange");
+const rangeValue = document.getElementById("rangeValue");
+
+// Update the custom range value and display it
+customRange.addEventListener("input", function() {
+  rangeValue.textContent = this.value;
+});
+
+// Set the initial range value
+rangeValue.textContent = customRange.value;
+</script>
+</body>
+</html>

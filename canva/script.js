@@ -1,59 +1,71 @@
-
-
 let storePhotosData;
-let page = 2
-let canvasImageId = 1
-let activeObject = 1
+let page = 2;
+let canvasImageId = 1;
+let activeObject = 1;
+let textActiveObject = 1;
+let borderColor = "red";
+let borderSize = 1;
+let fontSize = 14;
 
+function setHeight() {
+  let selectDiv = document.getElementById("desginingPart").children;
 
-function setHeight(){
-    let selectDiv = document.getElementById('desginingPart').children
-
-    if(selectDiv.length == 1){
-        document.getElementById('CanvasOuterHeight').style.height = "100vh"
-    }else{
-        document.getElementById('CanvasOuterHeight').style.height = "100vh"
-    }
-}
-setHeight()
-function selectCanvas(current){
-  console.log(current)
-  let templateElement = document.getElementsByClassName('canvas_area')
-
-  for(let i=0; i<=templateElement.length-1; i++){
-console.log(templateElement[i]?.classList)
-if(templateElement[i]?.classList.length  == 2){
-  console.log("inside if condition")
-  templateElement[i].classList.remove('selected_canvas_class')
-}
-else{ } // current.classList.add('selected_canvas_class') 
-
+  if (selectDiv.length == 1) {
+    document.getElementById("CanvasOuterHeight").style.height = "100vh";
+  } else {
+    document.getElementById("CanvasOuterHeight").style.height = "100vh";
   }
-  
-  current.classList.add('selected_canvas_class')
-
 }
-function setActiveObject(currentObject){
-  console.log(currentObject.classList[1])
-      let targetObject = currentObject.classList[1]
+setHeight();
+function selectCanvas(current) {
+  console.log(current);
+  let templateElement = document.getElementsByClassName("canvas_area");
 
-      console.log(targetObject.includes('object'))
+  for (let i = 0; i <= templateElement.length - 1; i++) {
+    console.log(templateElement[i]?.classList);
+    if (templateElement[i]?.classList.length == 2) {
+      console.log("inside if condition");
+      templateElement[i].classList.remove("selected_canvas_class");
+    } else {
+    } // current.classList.add('selected_canvas_class')
+  }
 
-      let removeSelectedObject = document.getElementsByClassName('element')
-console.log("removeSelectedObject",removeSelectedObject)
-
-
-      for(let i=0; i<= removeSelectedObject.length; i++){
-
-removeSelectedObject[i]?.classList.remove('selected_canvas_object')
-      }
-
-      if(targetObject.includes('object')){
-        currentObject.classList.add('selected_canvas_object')
-      }
-
-  
+  current.classList.toggle("selected_canvas_class");
 }
+function setActiveObject(currentObject) {
+  console.log(currentObject.classList[1]);
+  let targetObject = currentObject.classList[1];
+
+  console.log(targetObject.includes("object"));
+
+  let removeSelectedObject = document.getElementsByClassName("element");
+  console.log("removeSelectedObject", removeSelectedObject);
+
+  for (let i = 0; i <= removeSelectedObject.length; i++) {
+    removeSelectedObject[i]?.classList.remove("selected_canvas_object");
+  }
+
+  if (targetObject.includes("object")) {
+    currentObject.classList.add("selected_canvas_object");
+  }
+}
+
+function setTextActiveObject(currentObject){ 
+  console.log(currentObject.classList[1]);
+  
+  let removeSelectedObject = document.getElementsByClassName("text-container");
+  console.log("removeSelectedObject", removeSelectedObject);
+
+  for (let i = 0; i <= removeSelectedObject.length; i++) {
+    removeSelectedObject[i]?.classList.remove("selected_canvas_object_text");
+  }
+  let targetObject = currentObject.classList[3];
+
+  if (targetObject.includes("object_text")) {
+    currentObject.classList.add("selected_canvas_object_text");
+  }
+
+ }
 function showPhotosElement(currentClick) {
   // console.log("Function Clik", currentClick.innerText)
   let removeActiveMenu = document.getElementsByClassName("link_div");
@@ -103,7 +115,7 @@ async function getDynamicPhotos() {
     // storePhotosData.reverse();
     let photosElementRow = document.getElementById("photosElementRow");
     storePhotosData.map((currentData) => {
-   //   console.log(currentData.image);
+      //   console.log(currentData.image);
       let setcol = `
         <div class="col-4 p-0 element_image_cols">
                                 <img src="${currentData.image}" alt="" class="img-fluid" onclick="setImage(this)" dragabble="true" />
@@ -121,9 +133,8 @@ function filterData() {
   // getDynamicPhotos()
 }
 
-function addPage(){
-
-    let createCanvas = `
+function addPage() {
+  let createCanvas = `
     
     <div class="deasginarea_div">
        <div class="area_canvas_content">
@@ -140,22 +151,14 @@ function addPage(){
        </div>
    </div>
    
-    `
-    document.getElementById('desginingPart').innerHTML += createCanvas
-
+    `;
+  document.getElementById("desginingPart").innerHTML += createCanvas;
 }
 
+function setImage(currentClickedImage) {
+  console.log(currentClickedImage);
 
-
-
-  
-
-
-
-function  setImage(currentClickedImage){
-  console.log(currentClickedImage)
-
-    let img = `
+  let img = `
     <div id="image-container" class="element object${activeObject++}" draggable="true" ondragstart="dragImageStart(event)" onclick="setActiveObject(this)">
     <div class="top_cornor">
         <div class="cornor"></div>
@@ -170,39 +173,29 @@ function  setImage(currentClickedImage){
     </div>
   </div> 
    
-    `
+    `;
 
-  
-    console.log(`click image src is ${currentClickedImage.src} annd img src is ${img.src}`)
-    if(img.src == currentClickedImage.src){
-                alert("Choose another image")
-    }else{
-
-        let canvasArea = document.querySelector('.selected_canvas_class').innerHTML += img 
-      
-    }
-    
-   
-   
+  console.log(
+    `click image src is ${currentClickedImage.src} annd img src is ${img.src}`
+  );
+  if (img.src == currentClickedImage.src) {
+    alert("Choose another image");
+  } else {
+    let canvasArea = (document.querySelector(
+      ".selected_canvas_class"
+    ).innerHTML += img);
+  }
 }
 
-
-function uploadUserImage(){
-
-
-
-  
-}
-function addText(){
-
+function addText() {
   let text = `
   
-  <div id="image-container " class="element text-container position-absolute" draggable="true">
+  <div id="image-container " class="element text-container position-absolute object_text${textActiveObject++}" draggable="true" onclick="setTextActiveObject(this)">
   <div class="top_cornor">
       <div class="cornor"></div>
       <div class="cornor"></div>
   </div>
-  <span contenteditable="true">Type a Text</span>
+<div class="content" contenteditable="true">Type Text</div>
 
   <div class="bottom_cornor">
       <div class="cornor"></div>
@@ -211,52 +204,323 @@ function addText(){
   </div>
 </div> 
   
-  `
+  `;
 
-  let canvasArea = document.querySelector('.selected_canvas_class').innerHTML += text
-
-
-  
+  let canvasArea = (document.querySelector(
+    ".selected_canvas_class"
+  ).innerHTML += text);
 }
 
 function setFlipX(event) {
   // Assuming flipX and flipY are initially false
 
-  const image = document.querySelector('.selected_canvas_object').firstElementChild.nextElementSibling;
+  const image = document.querySelector(".selected_canvas_object")
+    .firstElementChild.nextElementSibling;
 
-  if(image){
-  if(image.style.transform === "scaleX(1)"){
-    image.style.transform = 'scaleX(-1)';
-
-  }else{
-    image.style.transform = 'scaleX(1)';
-
+  if (image) {
+    if (image.style.transform === "scaleX(1)") {
+      image.style.transform = "scaleX(-1)";
+    } else {
+      image.style.transform = "scaleX(1)";
+    }
   }
-}
-
 }
 function setFlipY(event) {
   // Assuming flipX and flipY are initially false
 
-  const image = document.querySelector('.selected_canvas_object').firstElementChild.nextElementSibling;
+  const image = document.querySelector(".selected_canvas_object")
+    .firstElementChild.nextElementSibling;
 
-  if(image){
-  if(image.style.transform === "scaleY(1)"){
-    image.style.transform = 'scaleY(-1)';
+  if (image) {
+    if (image.style.transform === "scaleY(1)") {
+      image.style.transform = "scaleY(-1)";
+    } else {
+      image.style.transform = "scaleY(1)";
+    }
+  }
+}
+function setColor(colorElement) {
+  console.log(colorElement.value);
+  let canvasArea = document.querySelector(".selected_canvas_class");
 
-  }else{
-    image.style.transform = 'scaleY(1)';
+  if (canvasArea) {
+    canvasArea.style.backgroundColor = colorElement.value;
+  }
+}
+function expandFilters(currentElemenet, event) {
+  let currentClick = event.target;
+  let targetElement = document.getElementById("filter_area");
+  console.log(currentElemenet.offsetHeight);
+  if (currentElemenet.offsetHeight == 35) {
+    currentElemenet.classList.add("filter_active");
 
+    currentElemenet.style.height = currentElemenet.scrollHeight + 28 + "px";
+  } else {
+    if (currentClick != targetElement) {
+      // console.log("target Element Comes in if condition")
+      // currentElemenet.style.height = currentElemenet.scrollHeight + 35 + "px";
+    } else {
+      console.log("target Element Comes in else condition");
+      currentElemenet.style.height = "35px";
+
+      currentElemenet.classList.remove("filter_active");
+    }
   }
 }
 
+function setDisableInput() {
+  document.getElementById("range_input").disabled = true;
 }
-function setColor(colorElement){
-  console.log(colorElement.value)
-  let canvasArea = document.querySelector('.selected_canvas_class')
+setDisableInput();
+
+function uploadUserImage(event) {
+  var files = event.target.files;
+  console.log(files);
+
+  const checkFiles = event.target.files[0];
+
+  if (checkFiles) {
+    for (let i = 0; i <= files.length; i++) {
+      console.log(files[i]);
+      let ImagesSrc;
+      try {
+        ImagesSrc = URL.createObjectURL(files[i]);
+      } catch (err) {
+        ImagesSrc = "../download.jpg";
+      }
+      console.log("Image src is ", ImagesSrc);
+
+      let uploadImage = `
+
+      <div class="col-4 p-0 upload_user_image_col">
+                                <img src="${ImagesSrc}"
+                                    alt="" class="img-fluid upload_user_images"  onclick="setImage(this)" dragabble="true"  />
+                            </div>
+      
+      
+      `;
+      document.getElementById("uploadUserImage").innerHTML += uploadImage;
+
+      document.getElementById("userUploadBox").classList.add("hide_button_div");
+    }
+  }
+}
+
+function setFilters(currentFilter, event) {
+  console.log(currentFilter.innerText); // Get the Selected Filter in filters
+
+  let filterList = document.querySelector('.filter_fonts_active')
+    if(filterList){
+      filterList.classList.remove('filter_fonts_active')
+    }
+  setTimeout(()=>{
+    currentFilter.classList.add('filter_fonts_active')
+  }, 400)
+
+  document.getElementById("range_input").disabled = false;
+
+  document.getElementById("setFilterName").innerText = currentFilter.innerText;
+  setImageFilter(currentFilter.innerText);
+}
+
+function changeFilterValue(inputValue) {
+  let getCurrentFilter = document.getElementById("setFilterName").innerText;
+  let filterValue = inputValue.value; filterValue
+  document.getElementById("setFilterValue").innerText = filterValue;
+
+
+  setImageFilter(getCurrentFilter, filterValue);
+}
+
+function setImageFilter(filterName, inputValue) {
+  const image = document.querySelector(".selected_canvas_object")
+    .firstElementChild.nextElementSibling;
+
+  if (image) {
+    let imageObjectKey = image.style.filter;
+    let styleValues = Object.values(imageObjectKey).splice(0, 9);
+
+    // console.log("object.entries is ", Object.entries(image.style.filter));
+
+    // image.style.filter = `${filterName}(${inputValue}%)`;
+    console.log("filterName", filterName);
+    if (filterName === "Blur") {
+      image.style.filter = `${filterName}(${inputValue}px)`;
+    } else if(filterName == "Hue-rotate"){
+      console.log("image hue-rotation")
+      image.style.filter = `${filterName}(${inputValue}deg)`;
+      
+
+    }else {
+      image.style.filter = `${filterName}(${inputValue}%)`;
+    }
+  }
+}
+function getBorderColor(element) {
+  // console.log(element.style.backgroundColor)
+  // borderColor = element.style.backgroundColor
+  // Get the computed style of the div
+  const computedStyle = window.getComputedStyle(element);
+
+  const backgroundColor = computedStyle.backgroundColor;
+
+  borderColor = backgroundColor;
+  console.log(borderColor);
+  const activeObject = document.querySelector(".selected_canvas_object")
+    .firstElementChild.nextElementSibling;
+
+  let borderHeight = document.getElementById("bordervalue").innerText;
+
+  activeObject.style.border = `${borderHeight} solid ${borderColor}`;
+}
+function setBorderSize() {
+  borderSize = document.getElementById("range_border_input").value;
+  document.getElementById("bordervalue").innerText = borderSize + "px";
+  console.log(borderSize);
+  const activeObject = document.querySelector(".selected_canvas_object")
+    .firstElementChild.nextElementSibling;
+
+  let borderHeight = document.getElementById("bordervalue").innerText;
+
+  activeObject.style.border = `${borderHeight} solid ${borderColor}`;
+}
+
+function setBorder(element, event) {
+  let currentClick = event.target;
+
+  if (currentClick == element) {
+    document
+      .querySelector(".sidemenu_active")
+      .classList.remove("sidemenu_active");
+    document.getElementById("PhotosElement").classList.add("hide_element_div");
+    document.getElementById("UploadElement").classList.add("hide_element_div");
+    document.getElementById("TextElement").classList.add("hide_element_div");
+    document
+      .getElementById("SetBorderElement")
+      .classList.remove("hide_element_div");
+  }
+}
+
+function setRotateImage(event) {
+  const activeObject = document.querySelector(".selected_canvas_object")
+    .firstElementChild.nextElementSibling;
+
+  activeObject.classList.toggle("rotate_deg");
+}
+function setTextfontSize(){ 
   
+  let activeObject = document.querySelector('.selected_canvas_object_text').firstElementChild.nextElementSibling
 
-  if(canvasArea){
-    canvasArea.style.backgroundColor = colorElement.value
+  if(activeObject){
+    // console.log(activeObject.style.fontWeight)
+   let textFontSize = document.getElementById('fontSizeNumber').innerText
+   console.log(textFontSize)
+    activeObject.style.fontSize = textFontSize+ "px"
+  }
+ }
+function downfontSize(element, event) {
+  let setfontSize = fontSize--;
+
+  if (setfontSize <= 1) {
+    fontSize = 1;
+    // console.log("goes down from the 0")
+    document.getElementById("fontSizeNumber").innerText = setfontSize;
+    setTextfontSize()
+
+  } else {
+    // console.log("goes up from the 0")
+
+    document.getElementById("fontSizeNumber").innerText = setfontSize;
+    setTextfontSize()
+
   }
 }
+function upfontSize(element, event) {
+  let setfontSize = fontSize++;
+
+  document.getElementById("fontSizeNumber").innerText = setfontSize;
+  setTextfontSize()
+}
+
+function setBold(event){ 
+  
+  let activeObject = document.querySelector('.selected_canvas_object_text').firstElementChild.nextElementSibling
+
+  if(activeObject){
+    console.log(activeObject.style.fontWeight)
+     if(activeObject.style.fontWeight == "normal"){
+      activeObject.style.fontWeight = "bold"
+
+    }
+    else{
+      activeObject.style.fontWeight = "normal"
+
+    }
+   
+  }
+ }
+
+ function setItalic(){ 
+  
+  let activeObject = document.querySelector('.selected_canvas_object_text').firstElementChild.nextElementSibling
+
+  if(activeObject){
+    console.log(activeObject.style.fontWeight)
+    if(activeObject.style.fontStyle == "normal"){
+      activeObject.style.fontStyle = "Italic"
+    }
+    else{
+      activeObject.style.fontStyle = "normal"
+
+    }
+   
+  }
+ }
+
+ function setUnderline(){ 
+  
+  let activeObject = document.querySelector('.selected_canvas_object_text').firstElementChild.nextElementSibling
+
+  if(activeObject){
+    console.log(activeObject.style.fontWeight)
+    if(activeObject.style.textDecoration == ""){
+      activeObject.style.textDecoration = "underline"
+    }
+    else if(activeObject.style.textDecoration == "none"){
+      activeObject.style.textDecoration = "underline"
+
+    }
+    else{
+      activeObject.style.textDecoration = "none"
+
+    }
+   
+  }
+ }
+
+document.addEventListener('keydown', (e)=>{
+  let keysEvent = e.key
+  console.log(keysEvent)
+  // let activeTextObject = document.querySelector('.selected_canvas_object_text').firstElementChild.nextElementSibling
+
+//  let activeImageObject = document.querySelector(".selected_canvas_object").firstElementChild.nextElementSibling;
+let activeTextObject = document.querySelector('.selected_canvas_object_text')
+let activeImageObject = document.querySelector(".selected_canvas_object")
+  if(keysEvent == "Delete"){
+    console.log("Excute this condition")
+    if(activeTextObject){
+          activeTextObject.remove()
+
+    }
+    if(activeImageObject){
+      activeImageObject.remove()
+    }
+  }
+  else if(keysEvent == "c"){
+    console.log("in a else if")
+  }
+
+})
+
+
+

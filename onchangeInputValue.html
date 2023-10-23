@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <input type="color" id="colorPicker">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div id="colorValue">Color Value: #000000</div>
+
+    </pre>
+  
+<script>
+  const colorPicker = document.getElementById("colorPicker");
+const colorValue = document.getElementById("colorValue");
+
+// Add an event listener to the color input element
+colorPicker.addEventListener("mousemove", function(event) {
+  // Calculate the mouse position within the color input element
+  const rect = colorPicker.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+
+  // Convert the position to a color value (in this example, as a hex color)
+  const color = `#${Math.round((x / rect.width) * 255).toString(16).padStart(2, "0")}${Math.round((y / rect.height) * 255).toString(16).padStart(2, "0")}`;
+
+  // Set the color input's value
+  colorPicker.value = color;
+
+  // Display the selected color value
+  colorValue.textContent = `Color Value: ${color}`;
+});
+</script>
+</body>
+</html>

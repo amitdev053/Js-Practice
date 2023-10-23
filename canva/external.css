@@ -12,7 +12,8 @@
 .text-container{
   display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: center;
+  
 }
 .text-container:hover{
   border: 2px solid #8b3dff;
@@ -31,31 +32,49 @@
   right: 0;
 }
 .top_cornor {
-  width: 100%;
+  width: 108%;
   display: flex;
   justify-content: space-between;
   padding: 0;
   position: absolute;
-  top: 0;
+  top: -8px;
   z-index: 9;
-  left: 0;
+  left: -5px;
   cursor: nwse-resize;
+  
 }
 .bottom_cornor {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0;
-  position: absolute;
-  cursor: nwse-resize;
-  cursor: nwse-resize;
-
-  bottom: 0;
-  left: 0;
-  right: 0;
+  width: 110%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    position: absolute;
+    cursor: nwse-resize;
+    bottom: -8px;
+    left: -7px;
+    /* right: 0; */
 }
 .cornor {
-  width: 15px;
-  height: 15px;
-  background-color: red;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+  border-radius: 50%;
+  border: 2px solid #8b3dff;
+}
+.cornor:hover{
+  background-color: #8b3dff;
+}
+
+
+.selected_canvas_class{
+  border: 2px solid #8b3dff;
+
+}
+.selected_canvas_object{
+  border: 2px solid #8b3dff !important;
+}
+.selected_canvas_object_text{
+border: 2px solid #8b3dff !important;
+
 }
