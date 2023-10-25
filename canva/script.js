@@ -6,7 +6,8 @@ let textActiveObject = 1;
 let borderColor = "red";
 let borderSize = 1;
 let fontSize = 14;
-
+let selectColorTypeObject;
+let textPaddingValue
 function setHeight() {
   let selectDiv = document.getElementById("desginingPart").children;
 
@@ -50,9 +51,9 @@ function setActiveObject(currentObject) {
   }
 }
 
-function setTextActiveObject(currentObject){ 
+function setTextActiveObject(currentObject) {
   console.log(currentObject.classList[1]);
-  
+
   let removeSelectedObject = document.getElementsByClassName("text-container");
   console.log("removeSelectedObject", removeSelectedObject);
 
@@ -64,8 +65,7 @@ function setTextActiveObject(currentObject){
   if (targetObject.includes("object_text")) {
     currentObject.classList.add("selected_canvas_object_text");
   }
-
- }
+}
 function showPhotosElement(currentClick) {
   // console.log("Function Clik", currentClick.innerText)
   let removeActiveMenu = document.getElementsByClassName("link_div");
@@ -239,14 +239,7 @@ function setFlipY(event) {
     }
   }
 }
-function setColor(colorElement) {
-  console.log(colorElement.value);
-  let canvasArea = document.querySelector(".selected_canvas_class");
 
-  if (canvasArea) {
-    canvasArea.style.backgroundColor = colorElement.value;
-  }
-}
 function expandFilters(currentElemenet, event) {
   let currentClick = event.target;
   let targetElement = document.getElementById("filter_area");
@@ -309,13 +302,13 @@ function uploadUserImage(event) {
 function setFilters(currentFilter, event) {
   console.log(currentFilter.innerText); // Get the Selected Filter in filters
 
-  let filterList = document.querySelector('.filter_fonts_active')
-    if(filterList){
-      filterList.classList.remove('filter_fonts_active')
-    }
-  setTimeout(()=>{
-    currentFilter.classList.add('filter_fonts_active')
-  }, 400)
+  let filterList = document.querySelector(".filter_fonts_active");
+  if (filterList) {
+    filterList.classList.remove("filter_fonts_active");
+  }
+  setTimeout(() => {
+    currentFilter.classList.add("filter_fonts_active");
+  }, 400);
 
   document.getElementById("range_input").disabled = false;
 
@@ -325,9 +318,9 @@ function setFilters(currentFilter, event) {
 
 function changeFilterValue(inputValue) {
   let getCurrentFilter = document.getElementById("setFilterName").innerText;
-  let filterValue = inputValue.value; filterValue
+  let filterValue = inputValue.value;
+  filterValue;
   document.getElementById("setFilterValue").innerText = filterValue;
-
 
   setImageFilter(getCurrentFilter, filterValue);
 }
@@ -346,12 +339,10 @@ function setImageFilter(filterName, inputValue) {
     console.log("filterName", filterName);
     if (filterName === "Blur") {
       image.style.filter = `${filterName}(${inputValue}px)`;
-    } else if(filterName == "Hue-rotate"){
-      console.log("image hue-rotation")
+    } else if (filterName == "Hue-rotate") {
+      console.log("image hue-rotation");
       image.style.filter = `${filterName}(${inputValue}deg)`;
-      
-
-    }else {
+    } else {
       image.style.filter = `${filterName}(${inputValue}%)`;
     }
   }
@@ -387,11 +378,13 @@ function setBorderSize() {
 
 function setBorder(element, event) {
   let currentClick = event.target;
+  let sideMenuActive =  document.querySelector(".sidemenu_active")
 
   if (currentClick == element) {
-    document
-      .querySelector(".sidemenu_active")
-      .classList.remove("sidemenu_active");
+   
+      if(sideMenuActive){
+        sideMenuActive.classList.remove("sidemenu_active");
+      }
     document.getElementById("PhotosElement").classList.add("hide_element_div");
     document.getElementById("UploadElement").classList.add("hide_element_div");
     document.getElementById("TextElement").classList.add("hide_element_div");
@@ -407,17 +400,17 @@ function setRotateImage(event) {
 
   activeObject.classList.toggle("rotate_deg");
 }
-function setTextfontSize(){ 
-  
-  let activeObject = document.querySelector('.selected_canvas_object_text').firstElementChild.nextElementSibling
+function setTextfontSize() {
+  let activeObject = document.querySelector(".selected_canvas_object_text")
+    .firstElementChild.nextElementSibling;
 
-  if(activeObject){
+  if (activeObject) {
     // console.log(activeObject.style.fontWeight)
-   let textFontSize = document.getElementById('fontSizeNumber').innerText
-   console.log(textFontSize)
-    activeObject.style.fontSize = textFontSize+ "px"
+    let textFontSize = document.getElementById("fontSizeNumber").innerText;
+    console.log(textFontSize);
+    activeObject.style.fontSize = textFontSize + "px";
   }
- }
+}
 function downfontSize(element, event) {
   let setfontSize = fontSize--;
 
@@ -425,102 +418,181 @@ function downfontSize(element, event) {
     fontSize = 1;
     // console.log("goes down from the 0")
     document.getElementById("fontSizeNumber").innerText = setfontSize;
-    setTextfontSize()
-
+    setTextfontSize();
   } else {
     // console.log("goes up from the 0")
 
     document.getElementById("fontSizeNumber").innerText = setfontSize;
-    setTextfontSize()
-
+    setTextfontSize();
   }
 }
 function upfontSize(element, event) {
   let setfontSize = fontSize++;
 
   document.getElementById("fontSizeNumber").innerText = setfontSize;
-  setTextfontSize()
+  setTextfontSize();
 }
 
-function setBold(event){ 
-  
-  let activeObject = document.querySelector('.selected_canvas_object_text').firstElementChild.nextElementSibling
+function setBold(event) {
+  let activeObject = document.querySelector(".selected_canvas_object_text")
+    .firstElementChild.nextElementSibling;
 
-  if(activeObject){
-    console.log(activeObject.style.fontWeight)
-     if(activeObject.style.fontWeight == "normal"){
-      activeObject.style.fontWeight = "bold"
-
+  if (activeObject) {
+    console.log(activeObject.style.fontWeight);
+    if (activeObject.style.fontWeight == "normal") {
+      activeObject.style.fontWeight = "bold";
+    } else {
+      activeObject.style.fontWeight = "normal";
     }
-    else{
-      activeObject.style.fontWeight = "normal"
-
-    }
-   
   }
- }
+}
 
- function setItalic(){ 
-  
-  let activeObject = document.querySelector('.selected_canvas_object_text').firstElementChild.nextElementSibling
+function setItalic() {
+  let activeObject = document.querySelector(".selected_canvas_object_text")
+    .firstElementChild.nextElementSibling;
 
-  if(activeObject){
-    console.log(activeObject.style.fontWeight)
-    if(activeObject.style.fontStyle == "normal"){
-      activeObject.style.fontStyle = "Italic"
+  if (activeObject) {
+    console.log(activeObject.style.fontWeight);
+    if (activeObject.style.fontStyle == "normal") {
+      activeObject.style.fontStyle = "Italic";
+    } else {
+      activeObject.style.fontStyle = "normal";
     }
-    else{
-      activeObject.style.fontStyle = "normal"
-
-    }
-   
   }
- }
+}
 
- function setUnderline(){ 
-  
-  let activeObject = document.querySelector('.selected_canvas_object_text').firstElementChild.nextElementSibling
+function setUnderline() {
+  let activeObject = document.querySelector(".selected_canvas_object_text")
+    .firstElementChild.nextElementSibling;
 
-  if(activeObject){
-    console.log(activeObject.style.fontWeight)
-    if(activeObject.style.textDecoration == ""){
-      activeObject.style.textDecoration = "underline"
+  if (activeObject) {
+    console.log(activeObject.style.fontWeight);
+    if (activeObject.style.textDecoration == "") {
+      activeObject.style.textDecoration = "underline";
+    } else if (activeObject.style.textDecoration == "none") {
+      activeObject.style.textDecoration = "underline";
+    } else {
+      activeObject.style.textDecoration = "none";
     }
-    else if(activeObject.style.textDecoration == "none"){
-      activeObject.style.textDecoration = "underline"
-
-    }
-    else{
-      activeObject.style.textDecoration = "none"
-
-    }
-   
   }
- }
+}
 
-document.addEventListener('keydown', (e)=>{
-  let keysEvent = e.key
-  console.log(keysEvent)
+document.addEventListener("keydown", (e) => {
+  let keysEvent = e.key;
+  console.log(keysEvent);
   // let activeTextObject = document.querySelector('.selected_canvas_object_text').firstElementChild.nextElementSibling
 
-//  let activeImageObject = document.querySelector(".selected_canvas_object").firstElementChild.nextElementSibling;
-let activeTextObject = document.querySelector('.selected_canvas_object_text')
-let activeImageObject = document.querySelector(".selected_canvas_object")
-  if(keysEvent == "Delete"){
-    console.log("Excute this condition")
-    if(activeTextObject){
-          activeTextObject.remove()
-
+  //  let activeImageObject = document.querySelector(".selected_canvas_object").firstElementChild.nextElementSibling;
+  let activeTextObject = document.querySelector(".selected_canvas_object_text");
+  let activeImageObject = document.querySelector(".selected_canvas_object");
+  if (keysEvent == "Delete") {
+    console.log("Excute this condition");
+    if (activeTextObject) {
+      activeTextObject.remove();
     }
-    if(activeImageObject){
-      activeImageObject.remove()
+    if (activeImageObject) {
+      activeImageObject.remove();
+    }
+  } else if (keysEvent == "c") {
+    console.log("in a else if");
+  }
+});
+
+function openColorPlatte(element, event) {
+  let currentClick = event.target;
+  let sideMenuActive = document.querySelector(".sidemenu_active")
+  let BorderPlatte = document.getElementById('SetBorderElement')
+
+  if (currentClick == element) {
+  if(sideMenuActive){
+    sideMenuActive.classList.remove("sidemenu_active");
+  }
+ 
+    document.getElementById("SetBorderElement").classList.add("hide_element_div");
+    document.getElementById("PhotosElement").classList.add("hide_element_div");
+    document.getElementById("UploadElement").classList.add("hide_element_div");
+    document.getElementById("TextElement").classList.add("hide_element_div");
+
+    document.getElementById("SetColorsElement").classList.remove("hide_element_div");
+  }
+}
+
+function setTypeColor(colorType, event) {
+  let currentClickColor = event.target;
+  let colorObject = {
+    textColor: document.getElementById("textcolor"),
+    textBgColor: document.getElementById("textBg"),
+    pageColor: document.getElementById("pagecolor"),
+  };
+
+  let groupColorOption = document.getElementsByClassName("group_color_option");
+
+  for (let i = 0; i <= groupColorOption.length; i++) {
+    // console.log(groupColorOption[i])
+    let checkActiveClass = document.querySelector(".setcolor_type");
+    if (checkActiveClass) {
+      groupColorOption[i].classList.remove("setcolor_type");
     }
   }
-  else if(keysEvent == "c"){
-    console.log("in a else if")
+  currentClickColor.classList.add("setcolor_type");
+  if (currentClickColor == colorObject.textColor) {
+    // console.log("Yes its text Color");
+    selectColorTypeObject = "TextColor";
+  } else if (currentClickColor == colorObject.textBgColor) {
+    // console.log("Yes its text Background Color");
+    selectColorTypeObject = "TextBgColor";
+  } else {
+    // console.log("Yes its Page Color");
+    selectColorTypeObject = "PageColor";
   }
+  // console.log("selectColorTypeObject", selectColorTypeObject);
+}
+function setPadding(inputvalue){
+  console.log(inputvalue.value)
+  textPaddingValue = inputvalue.value
+  document.getElementById("textpaddingValue").innerText = inputvalue.value + "px"
+  // setObjectColor(document.getElementsByClassName('color_card'))
+}
 
-})
+function setObjectColor(colorType){
+  //.firstElementChild.nextElementSibling
+  let activeTextObject = document.querySelector('.selected_canvas_object_text')
+  if(activeTextObject){
+    activeTextObject = document.querySelector('.selected_canvas_object_text').firstElementChild.nextElementSibling
+  }
+  let canvasArea = document.querySelector(".selected_canvas_class");  
+  // let textPaddingInput = document.getElementById('textPaddingInput').value
+
+  const computedStyle = window.getComputedStyle(colorType);
+  const color = computedStyle.backgroundColor;
+
+  
+
+if(selectColorTypeObject == "TextColor"){
+  activeTextObject.style.color = color
+}else if (selectColorTypeObject == "TextBgColor"){
+    activeTextObject.style.padding = textPaddingValue + "px"
+    activeTextObject.style.backgroundColor = color   
+
+}else if (selectColorTypeObject == "PageColor"){
+  canvasArea.style.backgroundColor = color 
+
+}
 
 
+}
+// function setColor(colorType) {
+//   console.log(colorElement.value);
 
+//   let canvasArea = document.querySelector(".selected_canvas_class");
+//   let activeTextObject = document.querySelector(".selected_canvas_object_text")
+//     .firstElementChild.nextElementSibling;
+
+//   if (activeTextObject) {
+//     activeTextObject.style.color = colorElement.value;
+//   } else {
+//     if (canvasArea) {
+//       canvasArea.style.backgroundColor = colorElement.value;
+//     }
+//   }
+// }

@@ -258,6 +258,72 @@
 
                     <!-- Set Border elements Div end here  -->
 
+                      <!-- Set Border elements Div start here  -->
+                      <div class="col-2 sidebar_element_div hide_element_div" id="SetColorsElement">
+
+
+                        <div class="row sidebar_element_row">
+                              
+                            <div class="col-12 p-0 sidebar_heading_div">
+                                <div class="app_sidebar_heading">Set Color</div>
+                                <i class="fa-solid fa-grip-lines"></i>
+                            </div>
+                            <div class="group_color mb-2">
+                                <div class="col-12 group_color_option" onclick="setTypeColor(this, event)" id="textBg">Set Text Background color</div>
+                                <div class="col-12 group_color_option" onclick="setTypeColor(this, event)" id="textcolor">Set Text color</div>
+                                <div class="col-12 group_color_option" onclick="setTypeColor(this, event)" id="pagecolor">Set Page Background color</div>
+
+                            </div>
+                            <div class="filter_controls px-0 pb-2">
+                                <span class="filter_fonts">Set padding</span>
+                                <input type="range" min="1" max="10" step="1" value="1"  class="range_input" id="textPaddingInput" onchange="setPadding(this)">
+                              
+                                 <span class="filter_fonts">Padding :-  <span id="textpaddingValue"></span></span>
+
+                              
+
+                            </div>
+
+<div id="uploadUserImage" class="d-flex align-items-start justify-space-between upload_user_div_area my-3 gap-2">
+    <div class="col-4 p-0 upload_user_image_col color_card" onclick="setObjectColor(this)">
+      
+    </div>
+    <div class="col-4 p-0 upload_user_image_col color_card bg-f97316" onclick="setObjectColor(this)">
+      
+    </div>
+
+    <div class="col-4 p-0 upload_user_image_col color_card bg-ea580c" onclick="setObjectColor(this)">
+      
+    </div>
+    <div class="col-4 p-0 upload_user_image_col color_card bg-fbbf24" onclick="setObjectColor(this)">
+      
+    </div>
+    <div class="col-4 p-0 upload_user_image_col color_card bg-black" onclick="setObjectColor(this)">
+      
+    </div>
+    <div class="col-4 p-0 upload_user_image_col color_card bg-38bdf8" onclick="setObjectColor(this)">
+      
+    </div><div class="col-4 p-0 upload_user_image_col color_card bg-7c3aed" onclick="setObjectColor(this)">
+      
+    </div><div class="col-4 p-0 upload_user_image_col color_card bg-dc2626" onclick="setObjectColor(this)">
+      
+    </div><div class="col-4 p-0 upload_user_image_col color_card bg-black" onclick="setObjectColor(this)">
+      
+    </div>
+<div class="col-4 p-0 upload_user_image_col color_card position-relative" onclick="getBorderColor(this)">
+        <input type="color" id="textColor" name="favcolor" class="fa-solid text_colorpicker border_color_input" value="#000000"title="Change Text Color" >
+    </div>
+</div>
+
+
+                          
+                        </div>
+                    </div>
+
+
+
+                    <!-- Set Border elements Div end here  -->
+
                 </div>
 
             </div>
@@ -273,7 +339,7 @@
                             <i class="fa-solid fa-bold"   title="Bold" onclick="setBold()"></i>
                             <i class="fa-solid fa-italic"   title="Italic" onclick="setItalic()"></i>
                             <i class="fa-solid fa-underline"   title="Underline" onclick="setUnderline()"></i>
-                            <div style="margin-right:20px;"><input type="color" id="textColor" name="favcolor" class="fa-solid text_colorpicker" value="#000000"title="Change Text Color" onchange="setColor(this)"></div>
+                            <div class="colors"  onclick="openColorPlatte(this, event)"></div>
                             <i class="fa-brands fa-slack"  title="Flip-X" onclick="setFlipX(event)"></i>
                             <i class="fa-brands fa-slack"  title="Flip-Y" onclick="setFlipY(event)"></i>
                             <i class="fa-solid fa-grip-lines"  title="Set Borders" onclick="setBorder(this,event)"></i>
