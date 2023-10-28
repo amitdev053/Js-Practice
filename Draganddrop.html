@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and drop Events</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+            background-color: cornflowerblue;
+        }
+
+        .boxes {
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            background-color: white;
+            align-items: center;
+            height: 80vh;
+
+        }
+
+        .boxes .box {
+            background: #eee;
+            width: 20%;
+            display: flex;
+            height: 20%;
+            padding: 0px !important;
+            align-items: center;
+            height: 183px;
+            justify-content: center;
+        }
+
+         img {
+            /* width: 100%; */
+            cursor: zoom-in;
+        }
+
+        .grabcursor {
+            cursor: all-scroll;
+        }
+        .transform{
+            transform: scale(1.7);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- //ondrop="drop(event)" ondragover="allowDrop(event)" -->
+    <div class="boxes" >
+        <!-- <div class="box" ondragstart="drag(this, event)"  id="drag1" onmouseover="setDragcursor(this)"
+            onmouseleave="removeDragCursor(this)"><img src="./download.jpg" alt=""></div> -->
+        <!-- <div class="box" ></div>
+        <div class="box" ></div>
+        <div class="box" ></div> -->
+        <img src="./download.jpg" alt="" onclick="setScaleup(this)">
+    </div>
+    <script>
+        function setDragcursor(element) {
+            // console.log("set drag")
+            // element.style.cursor = "Drag"
+            element.classList.add('grabcursor')
+
+
+        }
+    
+//         function allowDrop(ev) {
+//             ev.preventDefault();
+//         }
+//         function drag(element, event) {
+//             console.log(event)
+
+//             var x = event.offsetX
+
+//             var y = event.offsetY
+
+
+//             // var target = event.target
+//             // console.log(`event.dx  is ${event.dx} event.dy is ${event.dy}`)
+//             // var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+//             // var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+// // console.log(`data-x  is ${x} amd data-y is ${y}`)
+
+//             // translate the element
+//             element.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+//             // update the posiion attributes
+//             element.setAttribute('data-x', x)
+//             element.setAttribute('data-y', y)
+
+//         }
+
+
+//         function drop(ev) {
+//             ev.preventDefault();
+
+//         }
+
+
+//         function setDragcursor(element) {
+//             // console.log("set drag")
+//             // element.style.cursor = "Drag"
+//             element.classList.add('grabcursor')
+
+
+//         }
+//         function removeDragCursor(element) {
+//             // console.log("remove drag")
+//             element.classList.remove('grabcursor')
+
+//         }
+    </script>
+</body>
+
+</html>

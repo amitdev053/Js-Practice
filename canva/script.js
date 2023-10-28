@@ -8,6 +8,7 @@ let borderSize = 1;
 let fontSize = 14;
 let selectColorTypeObject;
 let textPaddingValue
+
 function setHeight() {
   let selectDiv = document.getElementById("desginingPart").children;
 
@@ -129,8 +130,23 @@ async function getDynamicPhotos() {
   }
 }
 getDynamicPhotos();
-function filterData() {
-  // getDynamicPhotos()
+function filterData(iconelement){
+  iconelement.classList.toggle('filter_icon_active')
+
+  let reverseData = storePhotosData.reverse()
+  let photosElementRow = document.getElementById("photosElementRow");
+  photosElementRow.innerHTML = ""
+  reverseData.map((currentData) => {
+    //   console.log(currentData.image);
+    let setcol = `
+   
+      <div class="col-4 p-0 element_image_cols">
+                              <img src="${currentData.image}" alt="" class="img-fluid" onclick="setImage(this)" dragabble="true" />
+      </div>        
+      `;
+    photosElementRow.innerHTML += setcol;
+    // setLoaderfalse();
+  });
 }
 
 function addPage() {
@@ -162,13 +178,13 @@ function setImage(currentClickedImage) {
     <div id="image-container" class="element object${activeObject++}" draggable="true" ondragstart="dragImageStart(event)" onclick="setActiveObject(this)">
     <div class="top_cornor">
         <div class="cornor"></div>
-        <div class="cornor"></div>
+        <div class="cornor top_right"></div>
     </div>
     <img  src="${currentClickedImage.src}" id="image" class="canvas_image " >  
 
     <div class="bottom_cornor">
         <div class="cornor"></div>
-        <div class="cornor"></div>
+        <div class="cornor bottom_right"></div>
 
     </div>
   </div> 

@@ -44,15 +44,20 @@
       function getData() {
         fetch("https://dummyjson.com/products")
           .then((response) => {
+            
             setLoader();
 
             return response.json();
           })
           .then((result) => {
+
+
             console.log(result);
+
             setTimeout(() => {
               setLoaderfalse();
             }, 2000);
+
             result.products.forEach(function (comment, index) {
               let images = comment.images;
               if (images[4]) {
