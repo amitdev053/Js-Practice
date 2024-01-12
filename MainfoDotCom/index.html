@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create your Leads Design</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous">
+        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet"
+            href="//unpkg.com/grapesjs/dist/css/grapes.min.css">
+        <link rel="stylesheet" href="./external.css">
+        <!-- <link rel="stylesheet" href="./contextMenu.css"> -->
+
+    </head>
+
+    <body>
+        <!-- Header Section Start Here-------------------------------------------------->
+        <nav
+            class="navbar navbar-expand-lg bg-body-tertiary fixed-top navbartag p-0">
+            <div class="container-fluid header_container_fluid">
+                <div
+                    class="row d-flex justify-content-between align-content-center w-100 main_header_row">
+                    <div
+                        class="col-7 d-flex justify-content-left align-content-center header_gap">
+                        <div
+                            class="project_preview header_item_vertical text-center">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>Back</span>
+                        </div>
+                        <div class="logobox">
+                            <img src="./Image/logo.png" class="logoimagetag" alt>
+                        </div>
+                        <div class="action_changes_icon">
+                            <div
+                                class="project_save header_item_vertical text-center">
+                                <i class="fa-solid fa-rotate-left "></i>
+                                <span>Back</span>
+                            </div>
+                            <div
+                                class="project_save header_item_vertical text-center">
+                                <i class="fa-solid fa-arrow-rotate-right "></i>
+                                <span>Before</span>
+                            </div>
+                        </div>
+                        <div class="project_name">
+                            <div
+                                class="project_save header_item_vertical  w-100">
+                                <div class="project_name_caption">Project Name</div>
+                                <div
+                                    class="edit_project_name d-flex justify-content-between align-content-center">
+                                    <div class="project_name_text">Joy in
+                                        creating</div>
+                                    <i class="fa-solid fa-pencil icon_fontsize"></i>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div
+                        class="col-5 d-flex align-content-center justify-content-between">
+
+                        <div class="user_action header_item_vertical">
+                            <div class="title">
+                                <span>Joy in creating</span>
+                            </div>
+                            <div class="smile_icons d-flex gap-2">
+                                <i class="fa-regular fa-face-grin "></i>
+                                <i class="fa-regular fa-face-grin "></i>
+                                <i class="fa-regular fa-face-grin "></i>
+
+                            </div>
+                        </div>
+
+                        <div
+                            class="last_saved_changees_header_box header_item_vertical">
+                            <span style="text-align: right;">Last Saved</span>
+                            <span>Jan 8, 2024, 1:00:50 p.m</span>
+
+                        </div>
+
+                        <div class="header_last_box d-flex">
+                            <div
+                                class="project_save header_item_vertical text-center">
+                                <i
+                                    class="fa-solid fa-file-arrow-down icon_fontsize"></i>
+                                <span>Save</span>
+
+                            </div>
+                            <div
+                                class="project_preview header_item_vertical text-center">
+                                <i class="fa-regular fa-eye icon_fontsize"></i>
+                                <span>Preview</span>
+                            </div>
+                            <div
+                                class="project_action header_item_vertical text-center">
+                                <i class="fa-solid fa-ellipsis icon_fontsize"></i>
+                                <span>Project</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- header Section End Here  ------------------------------------------->
+        <!-- Side bar and content area start here------------------------------------->
+        <div class="conatiner set_overflow_y d-flex justify-content-center">
+            <div class="row position-relative w-100">
+                <div class="col-3 sidebar_menu_col3">
+                    <div class="row p-0 sidebar_inner_element_row">
+                        <div class="col-1 sidebar_menu_link_div">
+                            <!-- SideBar clicked Menu Start Here  -->
+                            <div
+                                class="link_div show_element_menu sidemenu_active"
+                                onclick="showPhotosElement(this)">
+                                <i class="fa-solid fa-clapperboard"></i>
+                                <span>Photos</span>
+                            </div>
+                            <div class="link_div"
+                                onclick="showPhotosElement(this)">
+                                <i class="fa-solid fa-clapperboard"></i>
+                                <span>Uploads</span>
+                            </div>
+                            <div class="link_div"
+                                onclick="showPhotosElement(this)">
+                                <i class="fa-solid fa-clapperboard"></i>
+                                <span>Text</span>
+                            </div>
+                            <!-- SideBar clicked Menu Start Here  -->
+
+                        </div>
+                        <!-- Photo Menu elements Div start here  -->
+
+                        <div class="col-2 sidebar_element_div" id="PhotosElement">
+                           <div class="upload_inside_col2 w-100 h-100 d-flex justify-content-center flex-column align-content-center gap-4">
+                            <div class="app_upload_heading">From one of these sources <span >Add Photo</span></div>
+
+                            <button class="app_upload_button">
+                                <i class="fa-solid fa-display"></i>
+                                <span>Computer</span>
+                            </button>
+                            <button class="app_upload_button">
+                                <i class="fa-solid fa-display"></i>
+                                <span>Mobile</span>
+                            </button>
+                            <button class="app_upload_button">
+                                <i class="fa-solid fa-display"></i>
+                                <span>Qr Scanner</span>
+                            </button>
+                            <div class="app_upload_heading">Or <br><span>Drag Photos Here</span></div>
+
+                           </div>
+                        </div>
+                        <!-- Photos Menu elements Div start here  -->
+
+                        <!-- Upload Menu elements Div start here  -->
+                        <div class="col-2 sidebar_element_div hide_element_div"
+                            id="UploadElement">
+                            <div class="row sidebar_element_row">
+                                <div class="col-12 p-0 sidebar_heading_div">
+                                    <div class="app_sidebar_heading">Uploaded
+                                        Image</div>
+                                    <i class="fa-solid fa-camera"></i>
+                                </div>
+                                <div class="button_div position-relative"
+                                    id="userUploadBox">
+
+                                    <button class="upload_btn">Upload Image <i
+                                            class="fa-solid fa-camera"></i>
+                                        <input type="file" id="imageUpload"
+                                            onchange="uploadUserImage(event)"
+                                            class="position-absolute upload_image_input"
+                                            accept="image/*" multiple></button>
+                                </div>
+
+                                <div id="uploadUserImage"
+                                    class="d-flex align-items-start justify-space-between upload_user_div_area">
+
+                                </div>
+
+                                <!-- <div class="col-4 p-0 element_image_cols">
+                                <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg"
+                                    alt="" class="img-fluid" />
+                            </div>
+                            <div class="col-4 p-0 element_image_cols">
+                                <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg"
+                                    alt="" class="img-fluid" />
+                            </div>
+                            <div class="col-4 p-0 element_image_cols">
+                                <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg"
+                                    alt="" class="img-fluid" />
+                            </div>
+                            <div class="col-4 p-0 element_image_cols">
+                                <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg"
+                                    alt="" class="img-fluid" />
+                            </div>
+                            <div class="col-4 p-0 element_image_cols">
+                                <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg"
+                                    class="img-fluid" alt="" />
+                            </div> -->
+                            </div>
+                        </div>
+
+                        <!-- Upload Menu elements Div end here  -->
+
+                        <!-- Text Menu elements Div start here  -->
+                        <div class="col-2 sidebar_element_div hide_element_div"
+                            id="TextElement">
+
+                            <div class="row sidebar_element_row">
+
+                                <div class="col-12 p-0 sidebar_heading_div">
+                                    <div class="app_sidebar_heading">Style Your
+                                        Text</div>
+                                    <i class="fa-solid fa-camera"></i>
+                                </div>
+                                <div class="button_div">
+                                    <button class="upload_btn"
+                                        onclick="addText()">Add Text <i
+                                            class="fa-solid fa-camera"></i></button>
+                                </div>
+
+                                <!-- <div class="col-4 p-0 element_image_cols">
+                                <img src="../download.jpg" alt="" class="img-fluid" />
+                            </div>
+                            <div class="col-4 p-0 element_image_cols">
+                                <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg"
+                                    alt="" class="img-fluid" />
+                            </div>
+                            <div class="col-4 p-0 element_image_cols">
+                                <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg"
+                                    alt="" class="img-fluid" />
+                            </div>
+                            <div class="col-4 p-0 element_image_cols">
+                                <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg"
+                                    alt="" class="img-fluid" />
+                            </div>
+                            <div class="col-4 p-0 element_image_cols">
+                                <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg"
+                                    alt="" class="img-fluid" />
+                            </div>
+                            <div class="col-4 p-0 element_image_cols">
+                                <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg"
+                                    class="img-fluid" alt="" />
+                            </div> -->
+                            </div>
+                        </div>
+
+                        <!-- Text Menu elements Div end here  -->
+
+                        <!-- Set Border elements Div start here  -->
+                        <div class="col-2 sidebar_element_div hide_element_div"
+                            id="SetBorderElement">
+
+                            <div class="row sidebar_element_row">
+
+                                <div class="col-12 p-0 sidebar_heading_div">
+                                    <div class="app_sidebar_heading">Set Border</div>
+                                    <i class="fa-solid fa-grip-lines"></i>
+                                </div>
+                                <div class="filter_controls px-0 pb-2">
+                                    <span class="filter_fonts">Set Border</span>
+                                    <input type="range" min="1" max="10"
+                                        step="1" value="1" class="range_input"
+                                        id="range_border_input"
+                                        onchange="setBorderSize()">
+
+                                    <span class="filter_fonts">Border Size:-
+                                        <span id="bordervalue"></span></span>
+
+                                </div>
+
+                                <div id="uploadUserImage"
+                                    class="d-flex align-items-start justify-space-between upload_user_div_area my-3 gap-2">
+                                    <div
+                                        class="col-4 p-0 upload_user_image_col color_card"
+                                        onclick="getBorderColor(this)">
+
+                                    </div>
+                                    <div
+                                        class="col-4 p-0 upload_user_image_col color_card bg-f97316"
+                                        onclick="getBorderColor(this)">
+
+                                    </div>
+
+                                    <div
+                                        class="col-4 p-0 upload_user_image_col color_card bg-ea580c"
+                                        onclick="getBorderColor(this)">
+
+                                    </div>
+                                    <div
+                                        class="col-4 p-0 upload_user_image_col color_card bg-fbbf24"
+                                        onclick="getBorderColor(this)">
+
+                                    </div>
+                                    <div
+                                        class="col-4 p-0 upload_user_image_col color_card position-relative"
+                                        onclick="getBorderColor(this)">
+                                        <input type="color" id="textColor"
+                                            name="favcolor"
+                                            class="fa-solid text_colorpicker border_color_input"
+                                            value="#000000"
+                                            title="Change Text Color">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Set Border elements Div end here  -->
+
+                        <!-- Set Border elements Div start here  -->
+                        <div class="col-2 sidebar_element_div hide_element_div"
+                            id="SetColorsElement">
+
+                            <div class="row sidebar_element_row">
+
+                                <div class="col-12 p-0 sidebar_heading_div">
+                                    <div class="app_sidebar_heading">Set Color</div>
+                                    <i class="fa-solid fa-grip-lines"></i>
+                                </div>
+                                <div class="group_color mb-2">
+                                    <div class="col-12 group_color_option"
+                                        onclick="setTypeColor(this, event)"
+                                        id="textBg">Set Text Background color</div>
+                                    <div class="col-12 group_color_option"
+                                        onclick="setTypeColor(this, event)"
+                                        id="textcolor">Set Text color</div>
+                                    <div class="col-12 group_color_option"
+                                        onclick="setTypeColor(this, event)"
+                                        id="pagecolor">Set Page Background color</div>
+
+                                </div>
+                                <div class="filter_controls px-0 pb-2">
+                                    <span class="filter_fonts">Set padding</span>
+                                    <input type="range" min="1" max="10"
+                                        step="1" value="1" class="range_input"
+                                        id="textPaddingInput"
+                                        onchange="setPadding(this)">
+
+                                    <span class="filter_fonts">Padding :- <span
+                                            id="textpaddingValue"></span></span>
+
+                                </div>
+
+                                <div id="uploadUserImage"
+                                    class="d-flex align-items-start justify-space-between upload_user_div_area my-3 gap-2">
+                                    <div
+                                        class="col-4 p-0 upload_user_image_col color_card"
+                                        onclick="setObjectColor(this)">
+
+                                    </div>
+                                    <div
+                                        class="col-4 p-0 upload_user_image_col color_card bg-f97316"
+                                        onclick="setObjectColor(this)">
+
+                                    </div>
+
+                                    <div
+                                        class="col-4 p-0 upload_user_image_col color_card bg-ea580c"
+                                        onclick="setObjectColor(this)">
+
+                                    </div>
+                                    <div
+                                        class="col-4 p-0 upload_user_image_col color_card bg-fbbf24"
+                                        onclick="setObjectColor(this)">
+
+                                    </div>
+                                    <div
+                                        class="col-4 p-0 upload_user_image_col color_card bg-black"
+                                        onclick="setObjectColor(this)">
+
+                                    </div>
+                                    <div
+                                        class="col-4 p-0 upload_user_image_col color_card bg-38bdf8"
+                                        onclick="setObjectColor(this)">
+
+                                    </div><div
+                                        class="col-4 p-0 upload_user_image_col color_card bg-7c3aed"
+                                        onclick="setObjectColor(this)">
+
+                                    </div><div
+                                        class="col-4 p-0 upload_user_image_col color_card bg-dc2626"
+                                        onclick="setObjectColor(this)">
+
+                                    </div><div
+                                        class="col-4 p-0 upload_user_image_col color_card bg-black"
+                                        onclick="setObjectColor(this)">
+
+                                    </div>
+                                    <div
+                                        class="col-4 p-0 upload_user_image_col color_card position-relative"
+                                        onclick="getBorderColor(this)">
+                                        <input type="color" id="textColor"
+                                            name="favcolor"
+                                            class="fa-solid text_colorpicker border_color_input"
+                                            value="#000000"
+                                            title="Change Text Color">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Set Border elements Div end here  -->
+
+                    </div>
+
+                </div>
+
+                <div
+                    class="col-9 Desigin_div_start position-relative bg-black-alpha-10"
+                    id="desginingPart">
+
+                    <!-- canvas pages Start Here -->
+                    <div class="deasginarea_div">
+
+                        <!-- Center App Editor Starts Here---------------------------------------------------- -->
+                        <div class="center_main_app_editor d-flex w-100">
+                            <div class="col-1">
+
+                                <div class="left_app_actions w-100">
+                                    <div class="header_item_vertical" onclick="setText('leftTextButton')">
+                                        <i class="fa-solid fa-square-plus"></i>
+                                        <span>Text</span>
+                                    </div>
+                                    <div class="header_item_vertical">
+                                        <i class="fa-solid fa-square-plus"></i>
+                                        <span>Photo</span>
+                                    </div>
+                                    <div class="header_item_vertical">
+                                        <div class="rectangle_icon"></div>
+                                        <span>Rectangle</span>
+                                    </div>
+                                    <div class="header_item_vertical">
+                                        <div class="circle_icon"></div>
+                                        <span>Circle</span>
+                                    </div>
+                                    <div class="header_item_vertical">
+                                        <i class="fa-solid fa-gear"></i>
+                                        <span>Setting</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div
+                                    class="left_app_editor w-100 bg-7c3aed h-100">
+
+                                </div>
+
+                            </div>
+                            <div class="col-5">
+                                <div
+                                    class="right_app_editor w-100 bg-38bdf8 h-100">
+
+                                </div>
+
+                            </div>
+                            <div class="col-1">
+                                <div class="right_app_actions w-100">
+                                    <div class="header_item_vertical" onclick="setText('rightTextButton')">
+                                        <i class="fa-solid fa-square-plus"></i>
+                                        <span>Text</span>
+                                    </div>
+                                    <div class="header_item_vertical">
+                                        <i class="fa-solid fa-square-plus"></i>
+                                        <span>Photo</span>
+                                    </div>
+                                    <div class="header_item_vertical">
+                                        <div class="rectangle_icon"></div>
+                                        <span>Rectangle</span>
+                                    </div>
+                                    <div class="header_item_vertical">
+                                        <div class="circle_icon"></div>
+                                        <span>Circle</span>
+                                    </div>
+                                    <div class="header_item_vertical">
+                                        <i class="fa-solid fa-gear"></i>
+                                        <span>Setting</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Center App Editor End Here---------------------------------------------------- -->
+                        <!-- Bottom Templates Starts Here --------------------------------------->
+                        <div class="col-12 view_editor_col12">
+                            <div
+                                class="col-6 d-flex align-items-start justify-content-between pages_view_cols">
+                                <div class="page_view">
+                                    <i class="fa-solid fa-table-cells-large"></i>
+                                    <span>A Page</span>
+                                </div>
+                                <div class="page_view">
+                                    <i class="fa-solid fa-table-cells-large"></i>
+                                    <span>A Page</span>
+                                </div>
+                                <div class="page_view border_space_cell">
+
+                                </div>
+                                <div class="page_view position_back">
+                                    <i class="fa-solid fa-angle-left"></i>
+                                    <span>Previous Page</span>
+                                </div>
+
+                            </div>
+
+                            <div
+                                class="col-6 d-flex align-items-start justify-content-between pages_view_cols">
+                                <div class="page_view position_back_sm">
+                                   <div class="show_page">
+                                    Pages 1-2
+                                   </div>
+                                </div>
+                                <div class="page_view">
+                                    <span>Next Page</span>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                                <div class="page_view border_space_cell">
+
+                                </div>
+                                <div class="page_view zoom_editor_box">
+                                    <i
+                                        class="fa-solid fa-magnifying-glass-minus"></i>
+                                    <div class="zoom_view_value">
+                                        100%
+                                    </div>
+                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Bottom Templates Starts Here --------------------------------------->
+
+                        <div
+                            class="col-12 d-flex align-items-start all_templates" id="storeTemplateContainer">
+
+            <!-- ----------------------- All Templates Starts Here ------------------------>
+                            <div class="col-3 h-100 app_template_col3" id="Envelop">
+                                <div class="app_template_page">
+                                    <div class="col-6 canvas_templates_col-6 h-100">
+                                        <div class="canvas_inside_template_col w-100 h-100 bg-38bdf8">
+
+
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="col-6 canvas_templates_col-6 h-100">
+                                        <div class="canvas_inside_template_col w-100 h-100 bg-7c3aed">
+
+
+                                        </div>
+
+                                        
+                                    </div>
+                                </div>
+                                
+                                <span>Envelop</span>
+
+                            </div>
+            <!-- ----------------------- All Templates End Here ------------------------>
+
+                           
+
+                        </div>
+
+                        <!-- Bottom Templates End Here --------------------------------------->
+
+                    </div>
+
+                    <!-- canvas pages End Here -->
+
+                </div>
+            </div>
+        </div>
+        <!-- Side bar and content area End here------------------------------------->
+
+        <script src="./script.js"></script>
+        <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+        <script src="https://kit.fontawesome.com/1508b7bacb.js"
+            crossorigin="anonymous"></script>
+        <script>
+    
+// target elements with the "draggable" class
+interact('#image-container')
+  .draggable({
+    // enable inertial throwinthis
+    inertia: true,
+    // keep the element within the area of it's parent
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
+      })
+    ],
+    // enable autoScroll
+    autoScroll: true,
+
+    listeners: {
+      // call this function on every dragmove event
+      move: dragMoveListener,
+
+      // call this function on every dragend event
+      end (event) {
+        var textEl = event.target.querySelector('p')
+
+        textEl && (textEl.textContent =
+          'moved a distance of ' +
+          (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
+                     Math.pow(event.pageY - event.y0, 2) | 0))
+            .toFixed(2) + 'px')
+      }
+    }
+  })
+
+function dragMoveListener (event) {
+  var target = event.target
+  // keep the dragged position in the data-x/data-y attributes
+  var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+  var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+  // translate the element
+  target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+  // update the posiion attributes
+  target.setAttribute('data-x', x)
+  target.setAttribute('data-y', y)
+}
+
+// this function is used later in the resizing and gesture demos
+window.dragMoveListener = dragMoveListener
+
+interact('#image-container').resizable({
+    edges: { left: true, right: true, bottom: true, top: true },
+    onmove: (event) => {
+        console.log(event)
+      const target = event.target;
+      const x = (parseFloat(target.getAttribute('data-x')) || 0);
+      const y = (parseFloat(target.getAttribute('data-y')) || 0);
+      console.log("------",event.rect.width)
+
+      // Resize the image
+      target.style.width = event.rect.width + 'px';
+      target.style.height = event.rect.height + 'px';
+
+      // Update data-x and data-y attributes
+      target.setAttribute('data-x', x);
+      target.setAttribute('data-y', y);
+    },
+  });
+
+  interact('#image-container').resizable({
+    edges: { left: true, right: true, bottom: true, top: true },
+    // Add custom handles
+    modifiers: [
+      interact.modifiers.aspectRatio({ ratio: 'preserve' }),
+      interact.modifiers.restrictEdges({
+        outer: 'parent',
+      }),
+    ],
+    onmove: (event) => {
+      // Same as previous onmove logic
+    },
+  });
+
+
+
+  
+interact('.element')
+  .draggable({
+    // enable inertial throwing
+    inertia: true,
+    // keep the element within the area of it's parent
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
+      })
+    ],
+    // enable autoScroll
+    autoScroll: true,
+
+    listeners: {
+      // call this function on every dragmove event
+      move: dragMoveListener,
+
+      // call this function on every dragend event
+      end (event) {
+        var textEl = event.target.querySelector('p')
+
+        textEl && (textEl.textContent =
+          'moved a distance of ' +
+          (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
+                     Math.pow(event.pageY - event.y0, 2) | 0))
+            .toFixed(2) + 'px')
+      }
+    }
+  })
+
+function dragMoveListener (event) {
+  var target = event.target
+  // keep the dragged position in the data-x/data-y attributes
+  var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+  var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+  // translate the element
+  target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+  // update the posiion attributes
+  target.setAttribute('data-x', x)
+  target.setAttribute('data-y', y)
+}
+
+// this function is used later in the resizing and gesture demos
+window.dragMoveListener = dragMoveListener
+
+
+
+
+interact('.element').resizable({
+    edges: { left: true, right: true, bottom: true, top: true },
+    onmove: (event) => {
+      const target = event.target;
+      const x = (parseFloat(target.getAttribute('data-x')) || 0);
+      const y = (parseFloat(target.getAttribute('data-y')) || 0);
+      const fontSize = parseInt(getComputedStyle(target).fontSize, 10);
+
+      
+    const newWidth = event.rect.width;
+    const newHeight = event.rect.height;
+
+      // Update the font size based on the element's size
+    const newFontSize = (newWidth + newHeight) / 2;
+    target.style.fontSize = newFontSize + 'px';
+
+     // You can also restrict the minimum font size if needed
+     if (newFontSize < 12) {
+      target.style.fontSize = '12px';
+   
+    }
+
+    target.style.padding = "20px"
+      // Update data-x and data-y attributes
+      target.setAttribute('data-x', x);
+      target.setAttribute('data-y', y);
+    },
+  });
+
+
+  interact('.element').resizable({
+    edges: { left: true, right: true, bottom: true, top: true },
+    // Add custom handles
+    modifiers: [
+      interact.modifiers.aspectRatio({ ratio: 'preserve' }),
+      interact.modifiers.restrictEdges({
+        outer: 'parent',
+      }),
+    ],
+    onmove: (event) => {
+      // Same as previous onmove logic
+    },
+  });
+
+
+
+
+
+  </script>
+    </body>
+
+</html>

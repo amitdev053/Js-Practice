@@ -1,0 +1,80 @@
+#image-container {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  cursor: all-scroll;
+  border: 2px solid white;
+}
+
+#image-container:hover {
+  border: 2px solid #8b3dff;
+}
+.text-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.text-container:hover{
+  border: 2px solid #8b3dff;
+
+}
+/* #image {
+    width: 100%;
+    height: 100%;
+  } */
+
+#corner-pointer {
+  position: absolute;
+
+  cursor: nwse-resize;
+  bottom: 0;
+  right: 0;
+}
+.top_cornor {
+  width: 108%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  position: absolute;
+  top: -8px;
+  z-index: 9;
+  left: -5px;
+  cursor: nwse-resize;
+  
+}
+.bottom_cornor {
+  width: 110%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    position: absolute;
+    cursor: nwse-resize;
+    bottom: -8px;
+    left: -7px;
+    /* right: 0; */
+}
+.cornor {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+  border-radius: 50%;
+  border: 2px solid #8b3dff;
+}
+.cornor:hover{
+  background-color: #8b3dff;
+}
+
+
+.selected_canvas_class{
+  border: 2px solid #8b3dff;
+
+}
+.selected_canvas_object{
+  border: 2px solid #8b3dff !important;
+}
+.selected_canvas_object_text{
+border: 2px solid #8b3dff !important;
+
+}
