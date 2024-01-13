@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function FirstCapitalLetter(passString) {
+    console.log("Function run")
+    let newString
+    let makeArr = passString.split('')
+
+    console.log(makeArr[0].toUpperCase())
+    for(let i=1; i<=passString.length; i++){
+        console.log(passString[i])
+        newString = makeArr[0].toUpperCase()+ passString[i]
+    }
+   console.log(newString)
+    
+}
+FirstCapitalLetter("rahul")
+    </script>
+</body>
+</html>

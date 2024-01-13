@@ -44,7 +44,7 @@
                     </li>
                 </ul>
                 <div class="form-check form-switch">
-                    <button>Create a desgin</button>
+                    <button onclick="Download()">Export a desgin</button>
 
 
 
@@ -63,7 +63,7 @@
                             <i class="fa-solid fa-clapperboard"></i>
                             <span>Photos</span>
                         </div>
-                        <div class="link_div " onclick="showPhotosElement(this)">
+                        <div class="link_div" onclick="showPhotosElement(this)">
                             <i class="fa-solid fa-clapperboard"></i>
                             <span>Uploads</span>
                         </div>
@@ -420,7 +420,7 @@
 // target elements with the "draggable" class
 interact('#image-container')
   .draggable({
-    // enable inertial throwing
+    // enable inertial throwinthis
     inertia: true,
     // keep the element within the area of it's parent
     modifiers: [
@@ -469,9 +469,11 @@ window.dragMoveListener = dragMoveListener
 interact('#image-container').resizable({
     edges: { left: true, right: true, bottom: true, top: true },
     onmove: (event) => {
+        console.log(event)
       const target = event.target;
       const x = (parseFloat(target.getAttribute('data-x')) || 0);
       const y = (parseFloat(target.getAttribute('data-y')) || 0);
+      console.log("------",event.rect.width)
 
       // Resize the image
       target.style.width = event.rect.width + 'px';
@@ -603,3 +605,5 @@ interact('.element').resizable({
 </body>
 
 </html>
+
+

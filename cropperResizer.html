@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Resizer</title>
+  <style>
+    #resizable {
+      width: 200px;
+      height: 150px;
+      border: 2px solid #4285f4;
+      position: relative;
+    }
+
+    #resizer {
+      width: 10px;
+      height: 10px;
+      background-color: #4285f4;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      cursor: se-resize;
+    }
+  </style>
+</head>
+<body>
+
+<div id="resizable">
+  <div id="resizer"></div>
+  Content goes here
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const resizable = document.getElementById('resizable');
+    const resizer = document.getElementById('resizer');
+    let isResizing = false;
+
+    resizer.addEventListener('mousedown', function (e) {
+      isResizing = true;
+      document.addEventListener('mousemove', handleResize);
+      document.addEventListener('mouseup', stopResize);
+    });
+
+    function handleResize(e) {
+      if (isResizing) {
+        resizable.style.width = e.clientX - resizable.getBoundingClientRect().left + 'px';
+        resizable.style.height = e.clientY - resizable.getBoundingClientRect().top + 'px';
+      }
+    }
+
+    function stopResize() {
+      isResizing = false;
+      document.removeEventListener('mousemove', handleResize);
+      document.removeEventListener('mouseup', stopResize);
+    }
+  });
+</script>
+
+</body>
+</html>

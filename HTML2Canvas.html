@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #image-5{
+            filter: grayscale();
+        }
+    </style>
+</head>
+<body>
+    <div id="image-5">
+        <img  src="./download.jpg" alt="">
+
+    </div>
+    <button onclick="save()">Download</button>
+    <script src="http://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+<script>
+
+
+    function download(canvas, fileName) {
+        // create an "off-screen" anchor tag
+        const a = document.createElement('a');
+    
+    
+    
+        a.download = fileName;
+    
+        a.href = canvas.toDataURL(canvas);
+    
+        a.style.display = 'none';
+        document.body.appendChild( a );
+        a.click();
+        document.body.removeChild( a );
+      }
+     function save() {
+       
+        const element = document.getElementById('image-5')
+    
+        html2canvas(element).then( ( canvas ) => {
+          console.log(canvas)
+          this.download( canvas, 'screenshot' );
+        });
+    
+      }
+    </script>
+</body>
+</html>

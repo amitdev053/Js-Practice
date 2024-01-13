@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Inspection</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="300" height="200" style="border:1px solid #000;"></canvas>
+    <div id="outputImage"></div>
+
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
+        // Draw something on the canvas
+        context.fillStyle = 'green';
+        context.fillRect(10, 10, 100, 80);
+
+        // Convert canvas content to data URL
+        var dataURL = "./yellow.jpg" ;
+
+        // Display the image tag with the data URL
+        var img = new Image();
+        img.src = dataURL;
+
+        // Append the image tag to the 'outputImage' div
+        document.getElementById('outputImage').appendChild(img);
+    </script>
+</body>
+</html>

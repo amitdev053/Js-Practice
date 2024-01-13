@@ -1,24 +1,71 @@
-let font = ["games", "player", "players"]
-let index=0
+let font = [
+  "games",
+  "player",
+  "players",
+  "Crickter",
+  "football",
+  "Hockey",
+  "Shivanm",
+];
+let brightness = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130];
+let index = 0;
 
-// let popedfont = font.shift()
+document.getElementById("p").innerHTML = brightness[index];
+function showArray() {
 
-// console.log(popedfont)
-// console.log(font)
-// let popedtwo= font.shift()
-// console.log("popped Element two", popedtwo)
-// console.log("after s(ecound poped method new array is ", font)
+  let arrLength = font.length;
+  console.log(arrLength);
 
-// let element %= font.length
-document.getElementById('p').innerHTML = font[0]
+  let arrbirghtness = brightness.length;
+  console.log("****", brightness);
 
-function showArray(){
+  // if(index < arrLength - 1){
+  //     console.log("if condition")
+  //     index++
+  //     console.log(index, arrLength)
+  //     document.getElementById("p").innerHTML = font[index]
 
-    index++
-    console.log(index , font.length)
-    // index %= font.length
-    // console.log(index%=font.length)
-document.getElementById('p').innerHTML = font[index]
+  // }else if (index == 0){
+  //     index++
+  //     document.getElementById("p").innerHTML = font[index]
 
-    
+  // }else{
+  //     console.log("else condition")
+  //     index = 0
+
+  //     document.getElementById("p").innerHTML = font[index]
+
+  // }
+
+  if (index < arrbirghtness - 1) {
+    console.log("if condition");
+    index++;
+    // console.log(index, arrLength)
+    document.getElementById("p").innerHTML = brightness[index];
+  } else if (index == 0) {
+    index++;
+    document.getElementById("p").innerHTML = brightness[index];
+  } else {
+    console.log("else condition");
+    index = 0;
+
+    document.getElementById("p").innerHTML = brightness[index];
+  }
 }
+
+function controlFilter(filterName) {
+    console.log(filterName);
+    let recentFilterName = [];
+  
+    // Your logic here based on the value of filterName
+  
+    // Example: Push filterName into recentFilterName
+    recentFilterName.push(filterName);
+  
+    // Return or use recentFilterName as needed
+    return recentFilterName;
+  }
+  
+  // Example usage:
+  const result = controlFilter("someFilter");
+  console.log(result);

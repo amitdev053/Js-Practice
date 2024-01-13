@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.1.0/cropper.min.css">
+  
+    <title>Cropper.js Example</title>
+</head>
+<body>
+
+    <input type="file" id="inputImage" name="file" class="image-input" accept="image/*">
+    <div>
+        <img id="preview" alt="Preview">
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.1.0/cropper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.1.0/cropper.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Initialize Cropper.js
+            var cropper;
+
+            $('#inputImage').change(function (e) {
+                var input = e.target;
+                var reader = new FileReader();
+
+                reader.onload = function () {
+                    var dataURL = reader.result;
+
+                    // Destroy existing Cropper instance (if any)
+                    if (cropper) {
+                        cropper.destroy();
+                    }
+
+                    // Create a new Cropper instance
+                    cropper = new Cropper(document.getElementById('preview'), {
+                        viewMode: 1,
+                        aspectRatio: 1,
+                        autoCropArea: 1,
+                        responsive: true,
+                        restore: false,
+                        guides: false,
+                        highlight: false,
+                        cropBoxMovable: false,
+                        cropBoxResizable: false,
+                    });
+
+                    // Set the image source
+                    cropper.replace(dataURL);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            });
+
+            // Disable Cropper on button click
+            $('#disableCropper').click(function () {
+                if (cropper) {
+                    // Disable Cropper
+                    cropper.disable();
+                }
+            });
+        });
+    </script>
+
+    <button id="disableCropper">Disable Cropper</button>
+
+</body>
+</html>

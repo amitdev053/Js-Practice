@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+<span id="span1">this is span one <span id="span2">this is span two</span>
+    <script>
+
+// let i = 100;
+// while (i <= 100) {
+//   // console.log(i);
+//   i += 500;
+// }
+let globalObject = {
+  name : "Amit",
+  Jan : "Shivani",
+  mobile: 895687890,
+  Hobby : "Cricket",
+  getJan : function (){
+    return this.Jan
+  } 
+}
+function getObjectInfo(object){
+  console.log(`${object.name} Jan's is  ${object.getJan()}`)
+
+} 
+
+getObjectInfo(globalObject)
+
+
+  </script>
+
+  </body>
+</html>

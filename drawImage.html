@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/doka@3.3.0/dist/doka.min.css">
+
+    <style>
+
+        canvas{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="500" height="700" id="canvas"></canvas>
+<button onclick="download()">Download</button>
+
+<script src="https://cdn.jsdelivr.net/npm/doka@3.3.0/dist/doka.min.js"></script>
+
+    <script defer>
+        let canvas = document.getElementById('canvas')
+
+        //  document.body.innerHTML +=canvas
+        canvas.width = 500
+        canvas.height = 500
+        
+
+        let context = canvas.getContext("2d")
+
+        let image = new Image()
+        image.src = "./download.jpg"
+        image.onload = function(){
+           
+            context.filter = `grayscale() brightness(110%)`
+            context.drawImage(image, 50, 50, 400, 400)
+        }
+
+function download(){
+    let a = document.createElement('a')
+    a.href = canvas.toDataURL("image/png")
+    console.log(a.href)
+    a.download= "image.png"
+    a.click()
+}
+
+      
+    </script>
+    
+</body>
+</html>

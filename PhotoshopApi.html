@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<img src="./download.jpg" id="try" alt="">
+    <script>
+         
+         let apiKey = "c18fb57f2d084dca9c66f9d48a456edb"
+         let apiSecret = "p8e-AIkAcRuU36CFbT0NfVaJljNexPtjOn9t"
+         let jwt = "grant_type=client_credentials&client_id=c18fb57f2d084dca9c66f9d48a456edb&client_secret=p8e-AIkAcRuU36CFbT0NfVaJljNexPtjOn9t&scope=AdobeID,openid"
+
+        fetch("https://image.adobe.io/sensei/cutout", {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/x-www-form-urlencoded",
+                
+                                         
+
+            },
+            body:new URLSearchParams({
+      client_id: apiKey,
+      client_secret: apiSecret,
+      jwt_token: jwt,
+    }),
+            
+        
+        }).then(function(response){
+            return response.json()
+            
+        }).then(function(result){
+            console.log(result)
+        })
+    </script>
+</body>
+</html>

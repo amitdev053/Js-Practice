@@ -138,8 +138,7 @@ function filterData(iconelement){
   photosElementRow.innerHTML = ""
   reverseData.map((currentData) => {
     //   console.log(currentData.image);
-    let setcol = `
-   
+    let setcol = `   
       <div class="col-4 p-0 element_image_cols">
                               <img src="${currentData.image}" alt="" class="img-fluid" onclick="setImage(this)" dragabble="true" />
       </div>        
@@ -262,7 +261,6 @@ function expandFilters(currentElemenet, event) {
   console.log(currentElemenet.offsetHeight);
   if (currentElemenet.offsetHeight == 35) {
     currentElemenet.classList.add("filter_active");
-
     currentElemenet.style.height = currentElemenet.scrollHeight + 28 + "px";
   } else {
     if (currentClick != targetElement) {
@@ -504,7 +502,7 @@ document.addEventListener("keydown", (e) => {
   if (keysEvent == "Delete") {
     console.log("Excute this condition");
     if (activeTextObject) {
-      activeTextObject.remove();
+      // activeTextObject.remove();
     }
     if (activeImageObject) {
       activeImageObject.remove();
@@ -612,3 +610,41 @@ if(selectColorTypeObject == "TextColor"){
 //     }
 //   }
 // }
+
+function Download(){
+  let canvas = document.createElement('canvas')
+  let activeImage
+ let ctx = canvas.getContext("2d")
+
+ canvas.width = document.getElementsByClassName('selected_canvas_object').offsetWidth
+ canvas.height = document.getElementsByClassName('selected_canvas_object').offsetHeight
+
+//  ctx.filter = ` brightness(110%)`
+// if(document.getElementsByClassName('selected_canvas_object').firstElementChild.nextElementSibling.src){
+   activeImage = document.querySelector('.selected_canvas_object').firstElementChild.nextElementSibling.src
+
+// }
+
+console.log(activeImage)
+let image = new Image()
+image.src = activeImage
+image.onload = function () {
+  try {
+   ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
+   console.log(ctx.drawImage(image, -canvas.width/2, -canvas.height/2, canvas.width, canvas.height))
+} catch (error) {
+    console.error('Error drawing image:', error);
+}
+};
+
+
+document.body.appendChild(canvas)
+console.log("canvas.toDataURL()", canvas.toDataURL())
+
+let link = document.createElement('a')
+link.href = canvas.toDataURL('image/png')
+link.download = "image.png"
+link.click()
+}
+
+

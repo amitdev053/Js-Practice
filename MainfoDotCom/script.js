@@ -114,8 +114,7 @@ function setText(buttonType) {
     alert("Please select a pages First...");
   } else {
     if (buttonType == "leftTextButton") {
-      let getid =
-        document.querySelector(".left_app_editor").firstElementChild.classList;
+      let getid = document.querySelector(".left_app_editor").firstElementChild.classList;
 
       // document.getElementById(getid).innerHTML += text
       let bottomTemplateId = document.querySelector(".app_active_template")
@@ -131,9 +130,42 @@ function setText(buttonType) {
 
       // document.getElementsByClassName('left_app_editor').firstElementChild.innerHTML += text
     } else {
-      document.querySelector(".right_app_editor").firstElementChild.innerHTML +=
-        text;
+      let getid = document.querySelector(".right_app_editor").firstElementChild.classList;
+
+      // document.getElementById(getid).innerHTML += text
+      let bottomTemplateId = document.querySelector(".app_active_template")
+        .lastElementChild.firstElementChild.classList;
+
+      console.log("getid and bottomTemplateId", getid[4], bottomTemplateId[4]);
+
+      if (getid[4] == bottomTemplateId[4]) {
+        console.log("Match classlist", getid[4], bottomTemplateId[4]);
+        let ElementObject = document.getElementsByClassName(getid[4]);
+        for (let i = 0; i <= ElementObject.length; i++) {
+          ElementObject[i].innerHTML += text;
+        }
+      }
       // document.getElementsByClassName('right_app_editor').firstElementChild.innerHTML += text
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
