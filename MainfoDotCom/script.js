@@ -107,52 +107,91 @@ function selectPage(currentPage) {
   document.querySelector(".right_app_editor").innerHTML += pagetwo;
 }
 
+function setObjectInLeftCanvas(Element){
+  let setElement = Element
+  let getid = document.querySelector(".left_app_editor").firstElementChild.classList;
+
+  // document.getElementById(getid).innerHTML += text
+  let bottomTemplateId = document.querySelector(".app_active_template")
+    .firstElementChild.firstElementChild.classList;
+  console.log("getid and bottomTemplateId", getid, bottomTemplateId);
+  if (getid[4] == bottomTemplateId[4]) {
+    console.log("Match classlist", getid[4], bottomTemplateId[4]);
+    let ElementObject = document.getElementsByClassName(getid[4]);
+    for (let i = 0; i <= ElementObject.length; i++) {
+      ElementObject[i].innerHTML += setElement;
+    }
+  }
+  
+}
+
+function setObjectInRightCanvas(Element){
+  let setElement = Element
+
+  let getid = document.querySelector(".right_app_editor").firstElementChild.classList;
+
+  let bottomTemplateId = document.querySelector(".app_active_template")
+    .lastElementChild.firstElementChild.classList;
+
+  console.log("getid and bottomTemplateId", getid[4], bottomTemplateId[4]);
+
+  if (getid[4] == bottomTemplateId[4]) {
+    console.log("Match classlist", getid[4], bottomTemplateId[4]);
+    let ElementObject = document.getElementsByClassName(getid[4]);
+    for (let i = 0; i <= ElementObject.length; i++) {
+      ElementObject[i].innerHTML += setElement;
+    }
+  }
+
+}
 function setText(buttonType) {
-  console.log(buttonType);
   let text = `<span> Type a text </span>`;
+  
   if (document.querySelector(".left_app_editor").children.length == 0) {
     alert("Please select a pages First...");
   } else {
     if (buttonType == "leftTextButton") {
-      let getid = document.querySelector(".left_app_editor").firstElementChild.classList;
+      setObjectInLeftCanvas(text)
+      
+    } 
+    else {
+      setObjectInRightCanvas(text)
+    }
+  }
+}
 
-      // document.getElementById(getid).innerHTML += text
-      let bottomTemplateId = document.querySelector(".app_active_template")
-        .firstElementChild.firstElementChild.classList;
-      console.log("getid and bottomTemplateId", getid, bottomTemplateId);
-      if (getid[4] == bottomTemplateId[4]) {
-        console.log("Match classlist", getid[4], bottomTemplateId[4]);
-        let ElementObject = document.getElementsByClassName(getid[4]);
-        for (let i = 0; i <= ElementObject.length; i++) {
-          ElementObject[i].innerHTML += text;
-        }
-      }
+function setRectangle(buttonType) {
+  let Rectangle = `<div style="background: red; width:100%; height:100%"></div>`;
 
-      // document.getElementsByClassName('left_app_editor').firstElementChild.innerHTML += text
-    } else {
-      let getid = document.querySelector(".right_app_editor").firstElementChild.classList;
-
-      // document.getElementById(getid).innerHTML += text
-      let bottomTemplateId = document.querySelector(".app_active_template")
-        .lastElementChild.firstElementChild.classList;
-
-      console.log("getid and bottomTemplateId", getid[4], bottomTemplateId[4]);
-
-      if (getid[4] == bottomTemplateId[4]) {
-        console.log("Match classlist", getid[4], bottomTemplateId[4]);
-        let ElementObject = document.getElementsByClassName(getid[4]);
-        for (let i = 0; i <= ElementObject.length; i++) {
-          ElementObject[i].innerHTML += text;
-        }
-      }
-      // document.getElementsByClassName('right_app_editor').firstElementChild.innerHTML += text
+  if (document.querySelector(".left_app_editor").children.length == 0) {
+    alert("Please select a pages First...");
+  } else {
+    if (buttonType == "set_rectangle_left_canvas") {
+      setObjectInLeftCanvas(Rectangle)
+      
+    } 
+    else {
+      setObjectInRightCanvas(Rectangle)
     }
   }
 }
 
 
+function setCircle(buttonType) {
+  let Circle = `<div style="background: red; width:100px; height:100px; border-radius:50px"></div>`;
 
-
+  if (document.querySelector(".left_app_editor").children.length == 0) {
+    alert("Please select a pages First...");
+  } else {
+    if (buttonType == "set_circle_left_canvas") {
+      setObjectInLeftCanvas(Circle)
+      
+    } 
+    else {
+      setObjectInRightCanvas(Circle)
+    }
+  }
+}
 
 
 
