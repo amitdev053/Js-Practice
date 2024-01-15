@@ -428,23 +428,23 @@
                             <div class="col-1">
 
                                 <div class="left_app_actions w-100">
-                                    <div class="header_item_vertical" onclick="setText('leftTextButton')">
+                                    <div class="header_item_vertical cursor_pointer" onclick="setText('leftTextButton')">
                                         <i class="fa-solid fa-square-plus"></i>
                                         <span>Text</span>
                                     </div>
-                                    <div class="header_item_vertical">
+                                    <div class="header_item_vertical cursor_pointer">
                                         <i class="fa-solid fa-square-plus"></i>
                                         <span>Photo</span>
                                     </div>
-                                    <div class="header_item_vertical" onclick="setRectangle('set_rectangle_left_canvas')">
+                                    <div class="header_item_vertical cursor_pointer" onclick="setRectangle('set_rectangle_left_canvas')">
                                         <div class="rectangle_icon"></div>
                                         <span>Rectangle</span>
                                     </div>
-                                    <div class="header_item_vertical" onclick="setCircle('set_circle_left_canvas')">
+                                    <div class="header_item_vertical cursor_pointer" onclick="setCircle('set_circle_left_canvas')">
                                         <div class="circle_icon"></div>
                                         <span>Circle</span>
                                     </div>
-                                    <div class="header_item_vertical">
+                                    <div class="header_item_vertical cursor_pointer">
                                         <i class="fa-solid fa-gear"></i>
                                         <span>Setting</span>
                                     </div>
@@ -466,23 +466,23 @@
                             </div>
                             <div class="col-1">
                                 <div class="right_app_actions w-100">
-                                    <div class="header_item_vertical" onclick="setText('rightTextButton')">
+                                    <div class="header_item_vertical cursor_pointer" onclick="setText('rightTextButton')">
                                         <i class="fa-solid fa-square-plus"></i>
                                         <span>Text</span>
                                     </div>
-                                    <div class="header_item_vertical">
+                                    <div class="header_item_vertical cursor_pointer">
                                         <i class="fa-solid fa-square-plus"></i>
                                         <span>Photo</span>
                                     </div> 
-                                    <div class="header_item_vertical" onclick="setRectangle('set_rectangle_right_canvas')">
+                                    <div class="header_item_vertical cursor_pointer" onclick="setRectangle('set_rectangle_right_canvas')">
                                         <div class="rectangle_icon"></div>
                                         <span>Rectangle</span>
                                     </div>
-                                    <div class="header_item_vertical" onclick="setCircle('set_circle_right_canvas')">
+                                    <div class="header_item_vertical cursor_pointer" onclick="setCircle('set_circle_right_canvas')">
                                         <div class="circle_icon"></div>
                                         <span>Circle</span>
                                     </div>
-                                    <div class="header_item_vertical">
+                                    <div class="header_item_vertical cursor_pointer">
                                         <i class="fa-solid fa-gear"></i>
                                         <span>Setting</span>
                                     </div>
@@ -506,7 +506,7 @@
                                 <div class="page_view border_space_cell">
 
                                 </div>
-                                <div class="page_view position_back">
+                                <div class="page_view position_back cursor_pointer" onclick="throwPreviousPage()">
                                     <i class="fa-solid fa-angle-left"></i>
                                     <span>Previous Page</span>
                                 </div>
@@ -516,11 +516,11 @@
                             <div
                                 class="col-6 d-flex align-items-start justify-content-between pages_view_cols">
                                 <div class="page_view position_back_sm">
-                                   <div class="show_page">
+                                   <div class="show_page" id="showPage">
                                     Pages 1-2
                                    </div>
                                 </div>
-                                <div class="page_view">
+                                <div class="page_view cursor_pointer"  onclick="throwNextPage()">
                                     <span>Next Page</span>
                                     <i class="fa-solid fa-angle-right"></i>
                                 </div>

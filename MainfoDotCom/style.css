@@ -9,64 +9,6 @@ body{
   
 }
 /* Navbar styles End Here ------------------------------------------ */
-/* 
-.app_navbar_theme{
-  background-color: rgb(36, 28, 28) !important;
-  color: white !important;
-}
-.app_menu_color_theme{
-  color: white;
-}
-.nav_item_main_div{
-    display: flex !important;
-    align-items: center;
-    padding: 0px 0px 0px 290px!important
-}
-
-.navbar-nav .nav-item{
-  margin: 0px 20px;
-  font-family: 'Roboto' !important;
-  font-weight: 500;
-}
-
-.navbartag{
-    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-    padding: 10px 0px;
-    background: white !important;
-    z-index: 99999999999;
-}
-.navbar_dropdown{
-    display: flex;
-    align-items: center;
-
-}
-.dropdown_icon{
-    font-size: 13px !important;
-}
-.active{
-    background: #eee;
-    padding: 8px 21px 9px 21px !important;
-    border-radius: 40px;
-    cursor: pointer;
-}
-.form-switch{
-   width: 32%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end
-}
-.form-switch button{
-    background: #8b3dff;
-    border: none;
-    padding: 8px 20px;
-    color: white;
-    border-radius: 8px;
-    width: fit-content !important;
-}
-.logo_img{
-    padding: 0px 30px !important;
-} */
-
 .app_navbar_theme{
   background-color: rgb(36, 28, 28) !important;
   color: white !important;
@@ -377,7 +319,7 @@ overflow-y: hidden;
   width: 99%;
   height: 35vh;
 gap: 10px;
-background-color rgb(249, 249, 249);
+background-color: rgb(249, 249, 249);
   overflow-x: scroll;
   padding: 10px 10px;
 
@@ -492,7 +434,9 @@ background-color rgb(249, 249, 249);
 
 }
 /* Left Side Filter Data Icons Style */
-
+.cursor_pointer{
+  cursor: pointer;
+}
 
 
 

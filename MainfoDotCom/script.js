@@ -9,6 +9,8 @@
 // let selectColorTypeObject;
 // let textPaddingValue
 
+let TemplateIndex = 0;
+
 function showPhotosElement(currentClick) {
   // console.log("Function Clik", currentClick.innerText)
   let removeActiveMenu = document.getElementsByClassName("link_div");
@@ -92,10 +94,17 @@ function doBlankCanvas() {
   document.querySelector(".right_app_editor").innerHTML = "";
 }
 
+function showPage(pageText) {
+  document.getElementById("showPage").innerText = pageText;
+}
 function selectPage(currentPage) {
-  // console.log(currentPage.innerHTML)
+  console.log(currentPage.lastElementChild.innerText);
   doBlankCanvas();
   removeRecentSelectCanvas();
+  TemplateIndex = currentPage.id.split("").pop();
+  console.log("TemplateIndex", TemplateIndex);
+  showPage(currentPage.lastElementChild.innerText);
+
   currentPage.firstElementChild.classList.add("app_active_template");
 
   let pageOne = currentPage?.firstElementChild?.firstElementChild?.innerHTML;
@@ -107,28 +116,31 @@ function selectPage(currentPage) {
   document.querySelector(".right_app_editor").innerHTML += pagetwo;
 }
 
-function setObjectInLeftCanvas(Element){
-  let setElement = Element
-  let getid = document.querySelector(".left_app_editor").firstElementChild.classList;
+function setObjectInLeftCanvas(Element) {
+  let setElement = Element;
+  let getid =
+    document.querySelector(".left_app_editor").firstElementChild.classList;
 
   // document.getElementById(getid).innerHTML += text
   let bottomTemplateId = document.querySelector(".app_active_template")
     .firstElementChild.firstElementChild.classList;
+
   console.log("getid and bottomTemplateId", getid, bottomTemplateId);
   if (getid[4] == bottomTemplateId[4]) {
     console.log("Match classlist", getid[4], bottomTemplateId[4]);
     let ElementObject = document.getElementsByClassName(getid[4]);
+
     for (let i = 0; i <= ElementObject.length; i++) {
       ElementObject[i].innerHTML += setElement;
     }
   }
-  
 }
 
-function setObjectInRightCanvas(Element){
-  let setElement = Element
+function setObjectInRightCanvas(Element) {
+  let setElement = Element;
 
-  let getid = document.querySelector(".right_app_editor").firstElementChild.classList;
+  let getid =
+    document.querySelector(".right_app_editor").firstElementChild.classList;
 
   let bottomTemplateId = document.querySelector(".app_active_template")
     .lastElementChild.firstElementChild.classList;
@@ -142,20 +154,17 @@ function setObjectInRightCanvas(Element){
       ElementObject[i].innerHTML += setElement;
     }
   }
-
 }
 function setText(buttonType) {
   let text = `<span> Type a text </span>`;
-  
+
   if (document.querySelector(".left_app_editor").children.length == 0) {
     alert("Please select a pages First...");
   } else {
     if (buttonType == "leftTextButton") {
-      setObjectInLeftCanvas(text)
-      
-    } 
-    else {
-      setObjectInRightCanvas(text)
+      setObjectInLeftCanvas(text);
+    } else {
+      setObjectInRightCanvas(text);
     }
   }
 }
@@ -167,15 +176,12 @@ function setRectangle(buttonType) {
     alert("Please select a pages First...");
   } else {
     if (buttonType == "set_rectangle_left_canvas") {
-      setObjectInLeftCanvas(Rectangle)
-      
-    } 
-    else {
-      setObjectInRightCanvas(Rectangle)
+      setObjectInLeftCanvas(Rectangle);
+    } else {
+      setObjectInRightCanvas(Rectangle);
     }
   }
 }
-
 
 function setCircle(buttonType) {
   let Circle = `<div style="background: red; width:100px; height:100px; border-radius:50px"></div>`;
@@ -184,27 +190,52 @@ function setCircle(buttonType) {
     alert("Please select a pages First...");
   } else {
     if (buttonType == "set_circle_left_canvas") {
-      setObjectInLeftCanvas(Circle)
-      
-    } 
-    else {
-      setObjectInRightCanvas(Circle)
+      setObjectInLeftCanvas(Circle);
+    } else {
+      setObjectInRightCanvas(Circle);
     }
   }
 }
 
+function throwPreviousPage() {
+  if (document.querySelector(".left_app_editor").children.length == 0) {
+    alert("Please select a pages First...");
+  }
+}
 
+function throwNextPage() {
+  if (document.querySelector(".left_app_editor").children.length == 0) {
+    alert("Please select a pages First...");
+  } else {
+    let getTotaltemplate =
+      document.getElementById("storeTemplateContainer").children.length - 1;
+    console.log(getTotaltemplate);
 
+    if (TemplateIndex < getTotaltemplate) {
+      removeRecentSelectCanvas();
 
+      let active = document.getElementById("storeTemplateContainer").children[TemplateIndex++];
 
+      showPage(active.lastElementChild.innerText);
+      active.firstElementChild.classList.add("app_active_template");
 
+    } 
+    else if (TemplateIndex == 0) {
+      removeRecentSelectCanvas();
+      let active = document.getElementById("storeTemplateContainer").children[TemplateIndex++];
 
-
-
-
-
-
-
-
-
-
+      showPage(active.lastElementChild.innerText);
+      active.firstElementChild.classList.add("app_active_template");
+      
+    } 
+    else {
+      removeRecentSelectCanvas();
+      TemplateIndex = 1;
+      let active = document.getElementById("storeTemplateContainer").children[TemplateIndex];
+      
+      showPage(active.lastElementChild.innerText);
+      active.firstElementChild.classList.add("app_active_template");
+    
+    }
+  }
+}
