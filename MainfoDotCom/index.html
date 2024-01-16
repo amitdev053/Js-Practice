@@ -452,14 +452,14 @@
                             </div>
                             <div class="col-5">
                                 <div
-                                    class="left_app_editor w-100 bg-7c3aed h-100">
+                                    class="left_app_editor w-100 bg-ffffff h-100">
 
                                 </div>
 
                             </div>
                             <div class="col-5">
                                 <div
-                                    class="right_app_editor w-100 bg-38bdf8 h-100">
+                                    class="right_app_editor w-100 bg-ffffff h-100">
 
                                 </div>
 
@@ -501,12 +501,12 @@
                                 </div>
                                 <div class="page_view">
                                     <i class="fa-solid fa-table-cells-large"></i>
-                                    <span>A Page</span>
+                                    <span>All Page</span>
                                 </div>
                                 <div class="page_view border_space_cell">
 
                                 </div>
-                                <div class="page_view position_back cursor_pointer" onclick="throwPreviousPage()">
+                                <div class="page_view position_back cursor_pointer" id="BackPageButton" onclick="throwPreviousPage()">
                                     <i class="fa-solid fa-angle-left"></i>
                                     <span>Previous Page</span>
                                 </div>
@@ -517,7 +517,7 @@
                                 class="col-6 d-flex align-items-start justify-content-between pages_view_cols">
                                 <div class="page_view position_back_sm">
                                    <div class="show_page" id="showPage">
-                                    Pages 1-2
+                                    Envelop
                                    </div>
                                 </div>
                                 <div class="page_view cursor_pointer"  onclick="throwNextPage()">
@@ -549,7 +549,7 @@
                             <div class="col-3 h-100 app_template_col3" id="Envelop">
                                 <div class="app_template_page">
                                     <div class="col-6 canvas_templates_col-6 h-100">
-                                        <div class="canvas_inside_template_col w-100 h-100 bg-38bdf8">
+                                        <div class="canvas_inside_template_col w-100 h-100 bg-68757c5e">
 
 
                                         </div>
@@ -558,7 +558,7 @@
                                     </div>
 
                                     <div class="col-6 canvas_templates_col-6 h-100">
-                                        <div class="canvas_inside_template_col w-100 h-100 bg-7c3aed">
+                                        <div class="canvas_inside_template_col w-100 h-100 bg-ffffff">
 
 
                                         </div>
@@ -758,6 +758,7 @@ interact('.element').resizable({
       // Update data-x and data-y attributes
       target.setAttribute('data-x', x);
       target.setAttribute('data-y', y);
+    
     },
   });
 

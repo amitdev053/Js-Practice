@@ -10,7 +10,7 @@
 // let textPaddingValue
 
 let TemplateIndex = 0;
-
+let genrateObjectId = 0
 function showPhotosElement(currentClick) {
   // console.log("Function Clik", currentClick.innerText)
   let removeActiveMenu = document.getElementsByClassName("link_div");
@@ -53,7 +53,7 @@ function setTemplate() {
     <div class="col-3 h-100 app_template_col3" id="template${i}" onclick="selectPage(template${i})">
     <div class="app_template_page">
         <div class="col-6 canvas_templates_col-6 h-100">
-            <div class="canvas_inside_template_col w-100 h-100 bg-38bdf8 CanvasLeftPage${pairStart}"  id="CanvasLeftPage${pairStart}">
+            <div class="canvas_inside_template_col w-100 h-100 bg-68757c5e CanvasLeftPage${pairStart}"  id="CanvasLeftPage${pairStart}">
   
             </div>
   
@@ -61,7 +61,7 @@ function setTemplate() {
         </div>
   
         <div class="col-6 canvas_templates_col-6 h-100">
-            <div class="canvas_inside_template_col w-100 h-100 bg-7c3aed CanvasRightPage${pairEnd}"  id="CanvasRightPage${pairEnd}">
+            <div class="canvas_inside_template_col w-100 h-100 bg-ffffff CanvasRightPage${pairEnd}"  id="CanvasRightPage${pairEnd}">
   
   
             </div>
@@ -155,16 +155,91 @@ function setObjectInRightCanvas(Element) {
     }
   }
 }
+function removeSelectElement(){
+  console.log("removeSelectElementFunction")
+  
+  let getbody = document.body.addEventListener('click', (event)=>{
+    console.log(event)
+let eventId = event.id
+if(eventId == `objectid${genrateObjectId}`){
+  console.log("click over the currentl")
+}
+ 
+ 
+
+   
+
+  })
+  
+}
+removeSelectElement()
+
+
+function selectElement(currentid , event){
+  // removeSelectElement()
+  let setcontrol = document.querySelectorAll('.select_all_control')
+  for(let i =0 ; i<= setcontrol.length - 1; i++){
+   
+    setcontrol[i].classList.add('disable_control')
+  }
+
+  let currentClick = event.target
+  currentid = currentid.id
+  console.log(currentClick)
+//   console.log(currentid)
+  let currentElementId = document.getElementById(currentid)
+// document.getElementById(currentid).addEventListener('click', ()=>{
+// let topHandle = currentElementId.firstElementChild.classList.contains('disable_control')
+// if(topHandle){
+//   let SelectTopChildren = currentElementId.firstElementChild.classList.remove('disable_control')
+//   let SelectbottomChildren = currentElementId.LastElementChild.classList.remove('disable_control')
+// }
+// })
+if(event.target.id == currentid || currentClick == currentElementId.children){
+  let topHandle = currentElementId.firstElementChild.classList.remove('disable_control')
+  let bottomHandle = currentElementId.lastElementChild.classList.remove('disable_control')
+}else{
+  console.log("not running")
+  let topHandle = currentElementId.firstElementChild.classList.remove('disable_control')
+  let bottomHandle = currentElementId.lastElementChild.classList.remove('disable_control')
+}
+
+ 
+  
+}
 function setText(buttonType) {
-  let text = `<span> Type a text </span>`;
+  let text = `
+  <div class="position-relative object_controls element" id="objectid${genrateObjectId++}" onclick="selectElement(this,event)">
+  <div class="position-absolute top_handles select_all_control disable_control">
+  <div class="top_left_handle control_object_dot_pointer"></div>
+  <div class="top_right_handle control_object_dot_pointer"></div>
+  
+  </div>
+
+  
+  
+  
+  <span class="userText outline_none" contenteditable="true">Type your text here...</span>
+
+
+  <div class="position-absolute bottom_handles select_all_control disable_control">
+  <div class="bottom_left_handle control_object_dot_pointer"></div>
+  <div class="bottom_right_handle control_object_dot_pointer"></div>
+  
+  </div>
+  </div>
+  
+  `;
 
   if (document.querySelector(".left_app_editor").children.length == 0) {
     alert("Please select a pages First...");
   } else {
     if (buttonType == "leftTextButton") {
       setObjectInLeftCanvas(text);
+
     } else {
       setObjectInRightCanvas(text);
+
     }
   }
 }
@@ -201,6 +276,7 @@ function throwPreviousPage() {
   if (document.querySelector(".left_app_editor").children.length == 0) {
     alert("Please select a pages First...");
   }
+ 
 }
 
 function throwNextPage() {
@@ -211,7 +287,7 @@ function throwNextPage() {
       document.getElementById("storeTemplateContainer").children.length - 1;
     console.log(getTotaltemplate);
 
-    if (TemplateIndex < getTotaltemplate) {
+    if (TemplateIndex < getTotaltemplate || TemplateIndex <= getTotaltemplate) {
       removeRecentSelectCanvas();
 
       let active = document.getElementById("storeTemplateContainer").children[TemplateIndex++];
@@ -220,7 +296,7 @@ function throwNextPage() {
       active.firstElementChild.classList.add("app_active_template");
 
     } 
-    else if (TemplateIndex == 0) {
+    else if (TemplateIndex == 1) {
       removeRecentSelectCanvas();
       let active = document.getElementById("storeTemplateContainer").children[TemplateIndex++];
 
@@ -232,7 +308,7 @@ function throwNextPage() {
       removeRecentSelectCanvas();
       TemplateIndex = 1;
       let active = document.getElementById("storeTemplateContainer").children[TemplateIndex];
-      
+
       showPage(active.lastElementChild.innerText);
       active.firstElementChild.classList.add("app_active_template");
     

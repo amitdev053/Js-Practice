@@ -286,8 +286,13 @@ overflow-y: hidden;
 .position_back{
   position: relative;
   left: -25px;
-  border-right: 2px solid #dadada;
+border-right: 2px solid #dadada;
   padding: 8px 10px 8px 0px !important;
+ 
+}
+.disable_button_left_slider{
+  filter: invert();
+  border-right: 2px solid #8a868621;
 }
 
 
@@ -380,6 +385,15 @@ background-color: rgb(249, 249, 249);
   left: -6px;
 
 }
+/* Left and Right Canvas Background Color */
+.bg-ffffff{
+  background-color: #ffffff;
+
+}
+
+.bg-68757c5e{
+  background-color: #f6fcff;
+}
 
 
 
@@ -438,6 +452,52 @@ background-color: rgb(249, 249, 249);
   cursor: pointer;
 }
 
+/* set the object controls Style Start Here ---------------------------------------*/
+.object_controls{
+  position: relative;
+  background: white;
+  display: inline-flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #40d6da;
+ 
+}
+.object_active_controls{
+  border: 1px solid #40d6da;
+}
+
+.top_handles{
+  top: -3px;
+  display: flex;
+  width: 105%;
+  justify-content: space-between;
+  left: -3px;
+  align-items: center;
+}
+.control_object_dot_pointer{
+  width: 12px;
+  height: 12px;
+  border-radius: 20px;
+  background-color: #35b2b6;
+}
+.bottom_handles{
+  bottom: -3px;
+    display: flex;
+    width: 105%;
+    justify-content: space-between;
+    left: -3px;
+  align-items: center;
+
+}
+.disable_control{
+  display: none;
+}
+.outline_none{
+  outline: none;
+  
+}
+/* set the object controls Style End Here ---------------------------------------*/
 
 
 
