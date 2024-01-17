@@ -245,6 +245,10 @@ overflow-y: hidden;
   align-items: center;
   gap: 20px;
 }
+.height_fixed{
+  height: 53vh;
+  overflow: hidden;
+}
 .right_app_actions{    
   display: flex;
   flex-direction: column;
@@ -351,6 +355,7 @@ background-color: rgb(249, 249, 249);
   justify-content: center;
   align-items: center;
   padding: 9px;
+  overflow: hidden;
 
 }
 .upload_inside_col2{

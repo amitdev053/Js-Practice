@@ -10,7 +10,7 @@
 // let textPaddingValue
 
 let TemplateIndex = 0;
-let genrateObjectId = 0
+let genrateObjectId = 0;
 function showPhotosElement(currentClick) {
   // console.log("Function Clik", currentClick.innerText)
   let removeActiveMenu = document.getElementsByClassName("link_div");
@@ -155,50 +155,45 @@ function setObjectInRightCanvas(Element) {
     }
   }
 }
-function removeSelectElement(){
-  console.log("removeSelectElementFunction")
-  
-  let getbody = document.body.addEventListener('click', (event)=>{
-    console.log(event)
-let eventId = event.id
-if(eventId == `objectid${genrateObjectId}`){
-  console.log("click over the currentl")
+function getBodyClick() {
+  console.log("removeSelectElementFunction");
+
+  let getbody = document.body.addEventListener("click", (event) => {
+    console.log(event);
+    let eventId = event.id;
+  });
 }
- 
- 
+getBodyClick();
 
-   
-
-  })
-  
-}
-removeSelectElement()
-
-
-function selectElement(currentid , event){
+function selectElement(currentid, event) {
   // removeSelectElement()
-  let setcontrol = document.querySelectorAll('.select_all_control')
-  for(let i =0 ; i<= setcontrol.length - 1; i++){   
-    setcontrol[i].classList.add('disable_control')
+  // Hide the Element from the document--------------------//
+  let setcontrol = document.querySelectorAll(".select_all_control");
+  for (let i = 0; i <= setcontrol.length - 1; i++) {
+    setcontrol[i].classList.add("disable_control");
   }
+  // Hide the Element from the document--------------------//
 
-  let currentClick = event.target
-  currentid = currentid.id
-  console.log(currentClick)
+  let currentClick = event.target;
+  currentid = currentid.id;
+  console.log(currentClick);
 
-  let currentElementId = document.getElementById(currentid)
+  let currentElementId = document.getElementById(currentid);
 
-if(event.target.id == currentid || currentClick == currentElementId.children){
-  let topHandle = currentElementId.firstElementChild.classList.remove('disable_control')
-  let bottomHandle = currentElementId.lastElementChild.classList.remove('disable_control')
-}else{
-  console.log("not running")
-  let topHandle = currentElementId.firstElementChild.classList.remove('disable_control')
-  let bottomHandle = currentElementId.lastElementChild.classList.remove('disable_control')
-}
-
- 
-  
+  if (
+    event.target.id == currentid ||
+    currentClick == currentElementId.children
+  ) {
+    let topHandle =
+      currentElementId.firstElementChild.classList.remove("disable_control");
+    let bottomHandle =
+      currentElementId.lastElementChild.classList.remove("disable_control");
+  } else {
+    let topHandle =
+      currentElementId.firstElementChild.classList.remove("disable_control");
+    let bottomHandle =
+      currentElementId.lastElementChild.classList.remove("disable_control");
+  }
 }
 function setText(buttonType) {
   let text = `
@@ -229,10 +224,8 @@ function setText(buttonType) {
   } else {
     if (buttonType == "leftTextButton") {
       setObjectInLeftCanvas(text);
-
     } else {
       setObjectInRightCanvas(text);
-
     }
   }
 }
@@ -269,7 +262,6 @@ function throwPreviousPage() {
   if (document.querySelector(".left_app_editor").children.length == 0) {
     alert("Please select a pages First...");
   }
- 
 }
 
 function throwNextPage() {
@@ -283,28 +275,29 @@ function throwNextPage() {
     if (TemplateIndex < getTotaltemplate || TemplateIndex <= getTotaltemplate) {
       removeRecentSelectCanvas();
 
-      let active = document.getElementById("storeTemplateContainer").children[TemplateIndex++];
+      let active = document.getElementById("storeTemplateContainer").children[
+        TemplateIndex++
+      ];
 
       showPage(active.lastElementChild.innerText);
       active.firstElementChild.classList.add("app_active_template");
-
-    } 
-    else if (TemplateIndex == 1) {
+    } else if (TemplateIndex == 1) {
       removeRecentSelectCanvas();
-      let active = document.getElementById("storeTemplateContainer").children[TemplateIndex++];
+      let active = document.getElementById("storeTemplateContainer").children[
+        TemplateIndex++
+      ];
 
       showPage(active.lastElementChild.innerText);
       active.firstElementChild.classList.add("app_active_template");
-      
-    } 
-    else {
+    } else {
       removeRecentSelectCanvas();
       TemplateIndex = 1;
-      let active = document.getElementById("storeTemplateContainer").children[TemplateIndex];
+      let active = document.getElementById("storeTemplateContainer").children[
+        TemplateIndex
+      ];
 
       showPage(active.lastElementChild.innerText);
       active.firstElementChild.classList.add("app_active_template");
-    
     }
   }
 }
