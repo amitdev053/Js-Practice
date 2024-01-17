@@ -178,23 +178,16 @@ removeSelectElement()
 function selectElement(currentid , event){
   // removeSelectElement()
   let setcontrol = document.querySelectorAll('.select_all_control')
-  for(let i =0 ; i<= setcontrol.length - 1; i++){
-   
+  for(let i =0 ; i<= setcontrol.length - 1; i++){   
     setcontrol[i].classList.add('disable_control')
   }
 
   let currentClick = event.target
   currentid = currentid.id
   console.log(currentClick)
-//   console.log(currentid)
+
   let currentElementId = document.getElementById(currentid)
-// document.getElementById(currentid).addEventListener('click', ()=>{
-// let topHandle = currentElementId.firstElementChild.classList.contains('disable_control')
-// if(topHandle){
-//   let SelectTopChildren = currentElementId.firstElementChild.classList.remove('disable_control')
-//   let SelectbottomChildren = currentElementId.LastElementChild.classList.remove('disable_control')
-// }
-// })
+
 if(event.target.id == currentid || currentClick == currentElementId.children){
   let topHandle = currentElementId.firstElementChild.classList.remove('disable_control')
   let bottomHandle = currentElementId.lastElementChild.classList.remove('disable_control')
