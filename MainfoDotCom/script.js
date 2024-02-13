@@ -121,7 +121,7 @@ function setObjectInLeftCanvas(Element) {
   let getid =
     document.querySelector(".left_app_editor").firstElementChild.classList;
 
-  // document.getElementById(getid).innerHTML += text
+  
   let bottomTemplateId = document.querySelector(".app_active_template")
     .firstElementChild.firstElementChild.classList;
 
@@ -131,7 +131,9 @@ function setObjectInLeftCanvas(Element) {
     let ElementObject = document.getElementsByClassName(getid[4]);
 
     for (let i = 0; i <= ElementObject.length; i++) {
+
       ElementObject[i].innerHTML += setElement;
+
     }
   }
 }
@@ -165,8 +167,292 @@ function getBodyClick() {
 }
 getBodyClick();
 
+function setTextResizer(){
+  // Hide the Element from the document--------------------//
+  let setcontrol = document.querySelectorAll(".select_all_control");
+  for (let i = 0; i <= setcontrol.length - 1; i++) {
+  if(setcontrol[i].classList.contains('disable_control')){
+    
+       
+  
+interact('.element')
+.draggable({
+  // enable inertial throwing
+  inertia: true,
+  // keep the element within the area of it's parent
+  modifiers: [
+    interact.modifiers.restrictRect({
+      restriction: 'parent',
+      endOnly: true
+    })
+  ],
+  // enable autoScroll
+  autoScroll: true,
+
+  listeners: {
+    // call this function on every dragmove event
+    move: dragMoveListener,
+
+    // call this function on every dragend event
+    end (event) {
+      var textEl = event.target.querySelector('p')
+
+      textEl && (textEl.textContent =
+        'moved a distance of ' +
+        (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
+                   Math.pow(event.pageY - event.y0, 2) | 0))
+          .toFixed(2) + 'px')
+    }
+  }
+})
+
+function dragMoveListener (event) {
+var target = event.target
+// keep the dragged position in the data-x/data-y attributes
+var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+// translate the element
+target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+// update the posiion attributes
+target.setAttribute('data-x', x)
+target.setAttribute('data-y', y)
+}
+
+// this function is used later in the resizing and gesture demos
+window.dragMoveListener = dragMoveListener
+
+interact('.element').resizable({
+  edges: { left: true, right: true, bottom: true, top: true },
+  onmove: (event) => {
+    const target = event.target;
+    const x = (parseFloat(target.getAttribute('data-x')) || 0);
+    const y = (parseFloat(target.getAttribute('data-y')) || 0);
+    const fontSize = parseInt(getComputedStyle(target).fontSize, 10);
+
+    
+  const newWidth = event.rect.width;
+  const newHeight = event.rect.height;
+
+  // Update the font size based on the element's size
+
+  const fontSizeX = (newWidth * fontSize) / target.offsetWidth;
+  const fontSizeY = (newHeight * fontSize) / target.offsetHeight;
+
+  const newFontSize = Math.min(fontSizeX, fontSizeY);
+  target.style.fontSize = newFontSize + 'px';
+
+  // You can also restrict the minimum font size if needed
+  if (newFontSize < 12) {
+    target.style.fontSize = '12px';
+  }
+
+  target.style.padding = '20px';
+  // Update data-x and data-y attributes
+  target.setAttribute('data-x', x);
+  target.setAttribute('data-y', y);
+    
+  
+  },
+});
+
+
+interact('.element').resizable({
+  edges: { left: true, right: true, bottom: true, top: true },
+  // Add custom handles
+  modifiers: [
+    interact.modifiers.aspectRatio({ ratio: 'preserve' }),
+    interact.modifiers.restrictEdges({
+      outer: 'parent',
+    }),
+  ],
+  onmove: (event) => {
+    // Same as previous onmove logic
+  },
+});
+  
+  }else{
+   
+  
+    interact('.element')
+    .draggable({
+      // enable inertial throwing
+      inertia: true,
+      // keep the element within the area of it's parent
+      modifiers: [
+        interact.modifiers.restrictRect({
+          restriction: 'parent',
+          endOnly: true
+        })
+      ],
+      // enable autoScroll
+      autoScroll: true,
+    
+      listeners: {
+        // call this function on every dragmove event
+        move: dragMoveListener,
+    
+        // call this function on every dragend event
+        end (event) {
+          var textEl = event.target.querySelector('p')
+    
+          textEl && (textEl.textContent =
+            'moved a distance of ' +
+            (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
+                       Math.pow(event.pageY - event.y0, 2) | 0))
+              .toFixed(2) + 'px')
+        }
+      }
+    })
+    
+    function dragMoveListener (event) {
+    var target = event.target
+    // keep the dragged position in the data-x/data-y attributes
+    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+    
+    // translate the element
+    target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+    
+    // update the posiion attributes
+    target.setAttribute('data-x', x)
+    target.setAttribute('data-y', y)
+    }
+    
+    // this function is used later in the resizing and gesture demos
+    window.dragMoveListener = dragMoveListener
+    
+    
+    
+    
+    interact('.element').resizable({
+      edges: { left: false, right: false, bottom: false, top: false },
+      onmove: (event) => {
+        const target = event.target;
+        const x = (parseFloat(target.getAttribute('data-x')) || 0);
+        const y = (parseFloat(target.getAttribute('data-y')) || 0);
+        const fontSize = parseInt(getComputedStyle(target).fontSize, 10);
+    
+        
+      const newWidth = event.rect.width;
+      const newHeight = event.rect.height;
+    
+        // Update the font size based on the element's size
+      const newFontSize = (newWidth + newHeight) / 2;
+      target.style.fontSize = newFontSize + 'px';
+    
+       // You can also restrict the minimum font size if needed
+       if (newFontSize < 12) {
+        target.style.fontSize = '12px';
+     
+      }
+    
+      target.style.padding = "20px"
+        // Update data-x and data-y attributes
+        target.setAttribute('data-x', x);
+        target.setAttribute('data-y', y);
+        
+      
+      },
+    });
+    
+    
+    interact('.element').resizable({
+      edges: { left: false, right: false, bottom: false, top: false },
+      // Add custom handles
+      modifiers: [
+        interact.modifiers.aspectRatio({ ratio: 'preserve' }),
+        interact.modifiers.restrictEdges({
+          outer: 'parent',
+        }),
+      ],
+      onmove: (event) => {
+        // Same as previous onmove logic
+      },
+    });
+ 
+
+  }
+  }
+  // Hide the Element from the document--------------------//
+
+}
+
+function setRectangleResizer(){
+   
+// target elements with the "draggable" class
+interact('.rectangle_canvas_parentElement')
+.draggable({
+  // enable inertial throwinthis
+  inertia: true,
+  // keep the element within the area of it's parent
+  modifiers: [
+    interact.modifiers.restrictRect({
+      restriction: 'parent',
+      endOnly: true
+    })
+  ],
+  // enable autoScroll
+  autoScroll: true,
+
+  listeners: {
+    // call this function on every dragmove event
+    move: dragMoveListener,
+
+    // call this function on every dragend event
+    end (event) {
+      var textEl = event.target.querySelector('p')
+
+      textEl && (textEl.textContent =
+        'moved a distance of ' +
+        (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
+                   Math.pow(event.pageY - event.y0, 2) | 0))
+          .toFixed(2) + 'px')
+    }
+  }
+})
+
+function dragMoveListener (event) {
+var target = event.target
+// keep the dragged position in the data-x/data-y attributes
+var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+// translate the element
+target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+// update the posiion attributes
+target.setAttribute('data-x', x)
+target.setAttribute('data-y', y)
+}
+
+// this function is used later in the resizing and gesture demos
+window.dragMoveListener = dragMoveListener
+
+interact('.rectangle_canvas_parentElement')
+  .resizable({
+    edges: { top: true, left: true, bottom: true, right: true },
+    listeners: {
+      move: function (event) {
+        let { x, y } = event.target.dataset
+
+        x = (parseFloat(x) || 0) + event.deltaRect.left
+        y = (parseFloat(y) || 0) + event.deltaRect.top
+
+        Object.assign(event.target.style, {
+          width: `${event.rect.width}px`,
+          height: `${event.rect.height}px`,
+          transform: `translate(${x}px, ${y}px)`
+        })
+
+        Object.assign(event.target.dataset, { x, y })
+      }
+    }
+  })
+}
 function selectElement(currentid, event) {
-  // removeSelectElement()
+  
   // Hide the Element from the document--------------------//
   let setcontrol = document.querySelectorAll(".select_all_control");
   for (let i = 0; i <= setcontrol.length - 1; i++) {
@@ -176,28 +462,35 @@ function selectElement(currentid, event) {
 
   let currentClick = event.target;
   currentid = currentid.id;
+
   console.log(currentClick);
 
   let currentElementId = document.getElementById(currentid);
 
-  if (
-    event.target.id == currentid ||
-    currentClick == currentElementId.children
-  ) {
+  if (event.target.id == currentid || currentClick == currentElementId.children) {
     let topHandle =
       currentElementId.firstElementChild.classList.remove("disable_control");
     let bottomHandle =
       currentElementId.lastElementChild.classList.remove("disable_control");
   } else {
-    let topHandle =
-      currentElementId.firstElementChild.classList.remove("disable_control");
-    let bottomHandle =
-      currentElementId.lastElementChild.classList.remove("disable_control");
+    let topHandle = currentElementId.firstElementChild.classList.remove("disable_control");
+    let bottomHandle = currentElementId.lastElementChild.classList.remove("disable_control");
   }
+
+  // console.log(currentElementId.classList.contains)
+  if(currentElementId.classList.contains('rectangle_canvas_parentElement')){
+    setRectangleResizer()
+    console.log("Run rectangle resizer")
+  }else{
+    setTextResizer()
+  }
+
 }
+
 function setText(buttonType) {
   let text = `
   <div class="position-relative object_controls element" id="objectid${genrateObjectId++}" onclick="selectElement(this,event)">
+
   <div class="position-absolute top_handles select_all_control disable_control">
   <div class="top_left_handle control_object_dot_pointer"></div>
   <div class="top_right_handle control_object_dot_pointer"></div>
@@ -215,6 +508,7 @@ function setText(buttonType) {
   <div class="bottom_right_handle control_object_dot_pointer"></div>
   
   </div>
+
   </div>
   
   `;
@@ -224,6 +518,7 @@ function setText(buttonType) {
   } else {
     if (buttonType == "leftTextButton") {
       setObjectInLeftCanvas(text);
+
     } else {
       setObjectInRightCanvas(text);
     }
@@ -231,7 +526,29 @@ function setText(buttonType) {
 }
 
 function setRectangle(buttonType) {
-  let Rectangle = `<div style="background: red; width:100%; height:100%"></div>`;
+  let Rectangle = `
+  <div class="position-relative object_controls rectangle_canvas_parentElement p-0" id="objectid${genrateObjectId++}" onclick="selectElement(this,event)">
+  <div class="position-absolute top_handles select_all_control disable_control">
+  <div class="top_left_handle control_object_dot_pointer"></div>
+  <div class="top_right_handle control_object_dot_pointer"></div>
+  
+  </div>
+
+  
+  
+  
+  <div class="rectangle_canvas"></div>
+
+
+  <div class="position-absolute bottom_handles select_all_control disable_control">
+  <div class="bottom_left_handle control_object_dot_pointer"></div>
+  <div class="bottom_right_handle control_object_dot_pointer"></div>
+  
+  </div>
+  </div>
+  
+  
+  `;
 
   if (document.querySelector(".left_app_editor").children.length == 0) {
     alert("Please select a pages First...");
@@ -245,7 +562,28 @@ function setRectangle(buttonType) {
 }
 
 function setCircle(buttonType) {
-  let Circle = `<div style="background: red; width:100px; height:100px; border-radius:50px"></div>`;
+  let Circle = `
+  <div class="position-relative object_controls rectangle_canvas_parentElement p-0 " id="objectid${genrateObjectId++}" onclick="selectElement(this,event)">
+  <div class="position-absolute top_handles select_all_control disable_control">
+  <div class="top_left_handle control_object_dot_pointer"></div>
+  <div class="top_right_handle control_object_dot_pointer"></div>
+  
+  </div>
+
+  
+  
+  
+  <div class="circle_canvas"></div>
+
+
+  <div class="position-absolute bottom_handles select_all_control disable_control">
+  <div class="bottom_left_handle control_object_dot_pointer"></div>
+  <div class="bottom_right_handle control_object_dot_pointer"></div>
+  
+  </div>
+  </div>
+  
+  `;
 
   if (document.querySelector(".left_app_editor").children.length == 0) {
     alert("Please select a pages First...");
@@ -262,6 +600,7 @@ function throwPreviousPage() {
   if (document.querySelector(".left_app_editor").children.length == 0) {
     alert("Please select a pages First...");
   }
+  
 }
 
 function throwNextPage() {
@@ -272,7 +611,7 @@ function throwNextPage() {
       document.getElementById("storeTemplateContainer").children.length - 1;
     console.log(getTotaltemplate);
 
-    if (TemplateIndex < getTotaltemplate || TemplateIndex <= getTotaltemplate) {
+    if (TemplateIndex < getTotaltemplate || TemplateIndex <= getTotaltemplate) {     //  2<3  3<=3
       removeRecentSelectCanvas();
 
       let active = document.getElementById("storeTemplateContainer").children[
@@ -301,3 +640,5 @@ function throwNextPage() {
     }
   }
 }
+
+
